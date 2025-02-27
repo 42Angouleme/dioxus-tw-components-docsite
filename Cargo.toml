@@ -1,0 +1,34 @@
+[package]
+name = "dioxus_tw_components_docsite"
+version = "0.1.0"
+edition = "2021"
+authors = ["Louis Truchelut", "kbz_8", "Ziale"]
+
+[[bin]]
+name = "dioxus_components_bin_docsite"
+authors = ["Louis Truchelut", "kbz_8", "Ziale"]
+path = "src/docsite/main.rs"
+
+[dependencies]
+
+docsite-macro = { path = "./docsite-macro" }
+dioxus = { version = "0.6.3", features = ["web", "router"] }
+
+# TODO: change when dioxus-tw-component is released publicly
+dioxus-tw-components = { path = "../dioxus-components/", features = ["theme"] }
+chrono = "0.4.39"
+
+[workspace]
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
+# Used to isolate this crate from a possible workspace

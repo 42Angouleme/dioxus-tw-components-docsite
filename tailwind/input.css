@@ -1,0 +1,106 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+	:root {
+		--background: 0deg 0% 100%;
+		--foreground: 240deg 10% 3.9%;
+		--primary: 292deg 100% 30%;
+		--primary-foreground: 355deg, 100% 97.3%;
+		--secondary: 123deg 100% 22%;
+		--secondary-foreground: 123deg 100% 70%;
+		--accent: 240deg 4.8% 95.9%;
+		--accent-foreground: 240deg 5.9% 10%;
+		--muted: 240deg 4.8% 95.9%;
+		--muted-foreground: 240deg 3.8% 46.1%;
+		--destructive: 0deg 84.2% 60.2%;
+		--destructive-foreground: 0deg 0% 98%;
+		--success: 142deg 70% 45%;
+		--success-foreground: 120deg 100% 97.3%;
+		--border: 240deg 5.9% 90%;
+		--input: 240deg 5.9% 90%;
+		--ring: 240deg 10% 3.9%;
+		--global-radius: 5px;
+		--global-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+	}
+
+	.dark {
+		--background: 214.29deg 15.22% 18.04%;
+		--foreground: 0deg 0% 90%;
+		--primary: 292deg 100% 50%;
+		--primary-foreground: 0deg 0% 100%;
+		--secondary: 123deg 100% 40%;
+		--secondary-foreground: 0deg 0% 100%;
+		--accent: 240deg 5% 70%;
+		--accent-foreground: 0deg 0% 100%;
+		--muted: 240deg 5% 60%;
+		--muted-foreground: 0deg 0% 100%;
+		--destructive: 0deg 84.%, 30%;
+		--destructive-foreground: 0deg 0% 100%;
+		--success: 142deg 70% 60%;
+		--success-foreground: 0deg 0% 100%;
+		--border: 240deg 5% 50%;
+		--input: 240deg 5% 50%;
+		--ring: 0deg 0% 100%;
+		--global-shadow: 0 1px 3px 0 rgb(255 255 255 / 0.3), 0 1px 2px -1px rgb(255 255 255 / 0.3);
+	}
+
+	.h1 {
+		@apply text-4xl font-extrabold md:text-5xl;
+	}
+
+	.h2 {
+		@apply text-2xl font-bold md:text-4xl;
+	}
+
+	.h3 {
+		@apply text-2xl font-semibold md:text-3xl;
+	}
+	  
+	.h4 {
+		@apply text-xl font-semibold md:text-2xl;
+	}
+	  
+	.h5 {
+		@apply text-lg font-semibold md:text-xl;
+	}
+	  
+	.h6 {
+		@apply text-base font-semibold md:text-lg;
+	}
+
+	.paragraph {
+		@apply font-normal text-foreground;
+	}
+
+	.span {
+		@apply font-normal text-foreground;
+	}
+
+	.anchor {
+		@apply text-foreground/70 hover:text-foreground transition-colors cursor-pointer;
+	}
+}
+
+@layer utilities {
+	.scrollbar::-webkit-scrollbar {
+	  width: 8px;
+	}
+
+	.scrollbar::-webkit-scrollbar-track {
+		background: var(--primary);
+		/* Does not work */
+	}
+
+	.scrollbar::-webkit-scrollbar-thumb {
+	  background: #acacac;
+	  border-radius: 10px;
+	  /* border: 3px solid #f6f7ed; */
+	}
+
+	.scrollbar::-webkit-scrollbar-thumb:hover {
+	  /* background: var(--color-primary); */
+	  background: #000000;
+	}
+}
