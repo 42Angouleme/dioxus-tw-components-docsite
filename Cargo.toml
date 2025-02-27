@@ -7,7 +7,7 @@ authors = ["Louis Truchelut", "kbz_8", "Ziale"]
 [[bin]]
 name = "dioxus_components_bin_docsite"
 authors = ["Louis Truchelut", "kbz_8", "Ziale"]
-path = "src/docsite/main.rs"
+path = "src/main.rs"
 
 [dependencies]
 

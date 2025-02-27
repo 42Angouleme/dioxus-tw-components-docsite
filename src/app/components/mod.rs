@@ -1,5 +1,7 @@
 pub mod atoms;
-pub use atoms::{button::ButtonPage, buttongroup::ButtonGroupPage, icon::IconPage, placeholder::PlaceholderPage};
+pub use atoms::{
+    button::ButtonPage, buttongroup::ButtonGroupPage, icon::IconPage, placeholder::PlaceholderPage,
+};
 pub mod layout;
 pub use layout::SideBarComponent;
 

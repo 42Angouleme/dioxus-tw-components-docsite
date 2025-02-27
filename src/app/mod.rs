@@ -9,7 +9,10 @@ use dioxus_tw_components::prelude::*;
 
 use crate::app::router::Route;
 
-const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css", CssAssetOptions::new().with_preload(true).with_minify(true));
+const TAILWIND_CSS: Asset = asset!(
+    "/assets/tailwind.css",
+    CssAssetOptions::new().with_preload(true).with_minify(true)
+);
 
 pub fn App() -> Element {
     let theme_manager = use_context_provider(|| Signal::new(ThemeManager::default()));
