@@ -15,7 +15,7 @@ docsite-macro = { path = "./docsite-macro" }
 dioxus = { version = "0.6.3", features = ["web", "router"] }
 
 # TODO: change when dioxus-tw-component is released publicly
-dioxus-tw-components = { path = "../dioxus-components/", features = ["theme"] }
+dioxus-tw-components = { version = "0.1.0", features = ["theme"] }
 chrono = "0.4.39"
 
 [workspace]
