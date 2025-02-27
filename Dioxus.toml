@@ -11,7 +11,7 @@ default_platform = "web"
 out_dir = "dist"
 
 # resource (public) file folder
-asset_dir = "public"
+asset_dir = "assets"
 
 [bundle]
 
@@ -22,6 +22,7 @@ publisher = "42Angouleme"
 
 # HTML title tag content
 title = "Docsite"
+base_path = "dioxus-tw-components-docsite"
 
 [web.watcher]
 
