@@ -29,7 +29,7 @@ pub fn HomePage() -> Element {
                                 }
                             }
                             a { 
-                                href: "https://github.com/42Angouleme/dioxus-components",
+                                href: "https://github.com/42Angouleme/dioxus-tw-components",
                                 Button {
                                     color: Color::Default,
                                     variant: ButtonVariant::Outline,
