@@ -1,55 +1,27 @@
 [application]
-
-# App (Project) Name
 name = "Docsite"
-
-# Dioxus App Default Platform
-# desktop, web, mobile, ssr
 default_platform = "web"
-
-# `build` & `serve` dist path
 out_dir = "dist"
-
-# resource (public) file folder
 asset_dir = "assets"
 
 [bundle]
-
 identifier = "com.42Angouleme"
 publisher = "42Angouleme"
+icon = ["assets/favicon.png"]
 
 [web.app]
-
-# HTML title tag content
 title = "Docsite"
 base_path = "dioxus-tw-components-docsite"
 
 [web.watcher]
-
-# when watcher trigger, regenerate the `index.html`
 reload_html = true
-
-# which files or dirs will be watcher monitoring
 watch_path = ["src", "assets"]
-
-# uncomment line below if using Router
 index_on_404 = true
 
-# include `assets` in web platform
 [web.resource]
-
-# CSS style file
 style = []
-
-# Javascript code file
 script = []
 
 [web.resource.dev]
-
-# serve: [dev-server] only
-
-# CSS style file
 style = []
-
-# Javascript code file
 script = []

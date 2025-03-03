@@ -14,11 +14,13 @@ const TAILWIND_CSS: Asset = asset!(
     CssAssetOptions::new().with_preload(true).with_minify(true)
 );
 
+const FAVICON: Asset = asset!("/assets/favicon.png");
+
 pub fn App() -> Element {
     let theme_manager = use_context_provider(|| Signal::new(ThemeManager::default()));
 
     rsx!(
-        DioxusTwComponentsBootstrap {}
+        DioxusTwComponentsBootstrap { icon: FAVICON }
         document::Stylesheet { href: TAILWIND_CSS }
         Toaster {
             div {
