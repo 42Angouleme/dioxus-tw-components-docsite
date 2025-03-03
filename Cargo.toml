@@ -4,17 +4,8 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Louis Truchelut", "kbz_8", "Ziale"]
 
-[[bin]]
-name = "dioxus_components_bin_docsite"
-authors = ["Louis Truchelut", "kbz_8", "Ziale"]
-path = "src/main.rs"
-
 [dependencies]
-
-docsite-macro = { path = "./docsite-macro" }
 dioxus = { version = "0.6.3", features = ["web", "router"] }
-
-# TODO: change when dioxus-tw-component is released publicly
 dioxus-tw-components = { version = "0.1.0", features = ["theme"] }
 chrono = "0.4.39"
 
@@ -31,4 +22,3 @@ inherits = "dev"
 
 [profile.android-dev]
 inherits = "dev"
-# Used to isolate this crate from a possible workspace

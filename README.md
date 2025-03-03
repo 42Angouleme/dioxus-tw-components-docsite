@@ -26,6 +26,8 @@ Or this one if you want to bundle the docsite:
 dx bundle
 ```
 
+To go to the local website you'll need to go to `localhost:8080/dioxus-tw-components-docsite/` due to the `base_path` attribute in the [Dioxus.toml](https://github.com/42Angouleme/dioxus-tw-components-docsite/blob/main/Dioxus.toml#L14]).
+
 ## License
 
 This project is licensed under either the MIT license or the Apache-2 License.
