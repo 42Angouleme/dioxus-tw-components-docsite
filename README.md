@@ -4,12 +4,12 @@ A docsite to showcase, explore the [dioxus-tw-components library](https://github
 
 ## Build
 
-To build the docsite you first need to build the `tailwind.css` file using [TailwindCSS 3](https://v3.tailwindcss.com/).
-[Here](https://v3.tailwindcss.com/docs/installation) you'll find how to install it.
+To build the docsite you first need to build the `tailwind.css` file using [TailwindCSS 4](https://tailwindcss.com/).
+[Here](https://tailwindcss.com/docs/installation/tailwind-cli) you'll find how to install it.
 
 Then run this command in the project's root directory:
 ```bash
-npx tailwindcss -c ./tailwind/tailwind.config.js -i ./tailwind/input.css -o ./assets/tailwind.css
+npx @tailwindcss/cli -c ./tailwind/tailwind.config.js -i ./tailwind/input.css -o ./assets/tailwind.css
 ```
 
 Install the dioxus-cli binary using this command:

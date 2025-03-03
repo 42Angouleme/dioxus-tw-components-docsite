@@ -59,7 +59,7 @@ fn GithubLink() -> Element {
     rsx!(
         a {
             class: "flex justify-center items-center size-10 rounded-global-radius p-2 hover:bg-foreground/30",
-            href: "https://github.com/42Angouleme/SSCCE_dioxus",
+            href: "https://github.com/42Angouleme/dioxus-tw-components",
             target: "_blank",
             svg {
                 xmlns: "http://www.w3.org/2000/svg",
