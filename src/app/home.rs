@@ -16,7 +16,7 @@ pub fn HomePage() -> Element {
                         }
                         h3 { class: "text-[1.25em] font-light text-ghdarkmetal max-w-screen-sm md:max-w-screen-md md:text-left text-center flex flex-col",
                             span { class: "max-w-screen-md leading-loose",
-                                "A simple but highly customizable and efficient cross-platform components library for Dioxus 0.6 based on TailwindCSS 3."
+                                "A simple but highly customizable and efficient cross-platform components library for Dioxus 0.6 based on TailwindCSS 4."
                             }
                         }
                         div { class: "pt-8 lg:pt-16 text-[1em] flex flex-row space-x-4 mx-auto lg:mx-0 justify-center lg:justify-start",
@@ -28,7 +28,8 @@ pub fn HomePage() -> Element {
                                     "Explore"
                                 }
                             }
-                            Link { to: "https://github.com/42Angouleme/dioxus-components",
+                            a { 
+                                href: "https://github.com/42Angouleme/dioxus-tw-components",
                                 Button {
                                     color: Color::Default,
                                     variant: ButtonVariant::Outline,

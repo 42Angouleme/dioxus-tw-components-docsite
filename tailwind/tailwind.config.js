@@ -3,11 +3,10 @@ module.exports = {
 	mode: "all",
 	content: [
 		// include all rust, html and css files in the src directory
-		"./src/**/*.{rs,html,css}",
-		//"../dioxus-components/src/**/*.{rs,html,css}",
-		`${process.env.HOME}/.cargo/registry/src/**/dioxus-tw-components-0.1.0/src/**/*.{rs,html,css}`,
-		// include all html files in the output (dist) directory
-		"./dist/**/*.html",
+		"../src/**/*.{rs,html,css}",
+		"./safelist.txt",
+		//"../../dioxus-components/src/**/*.{rs,html,css}",
+		`${process.env.HOME}/.cargo/registry/src/**/dioxus-tw-components-*/src/**/*.{rs,html,css}`,
 	],
 	theme: {
 		extend: {
@@ -39,7 +38,7 @@ module.exports = {
 			keyframes: {
 				"shimmer" : {
 					"100%" : {
-						"transform" : "translateX(100%)",
+						"transform" : "translateX(200%)",
 					}
 				}
 			},
@@ -48,11 +47,4 @@ module.exports = {
 		},
 	},
 	plugins: [],
-	// Used to bundle ALL the css Tailwind can make, we use it so you can pass css to component in their demo
-	// Also useful in dev to avoid having to recompile both the css from Tailwind and because of that Dioxus
-	safelist: [
-		{
-			pattern: /.*/
-		}
-	]
 }
