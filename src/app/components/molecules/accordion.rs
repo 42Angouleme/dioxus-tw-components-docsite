@@ -24,39 +24,41 @@ impl DemoComponent for AccordionProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
-            Accordion { class: state.read()[&0].get_class(),
-                AccordionItem {
-                    AccordionTrigger { id: "accordion-1", "Products" }
-                    AccordionContent {
-                        class: state.read()[&1].get_class(),
-                        animation: state.read()[&1].get_animation(),
-                        id: "accordion-1",
-                        p { "Check out our latest products!" }
+        rsx! {
+            div { class: "min-h-64 mt-6 items-start",
+                Accordion { class: state.read()[&0].get_class(),
+                    AccordionItem {
+                        AccordionTrigger { id: "accordion-1", "Products" }
+                        AccordionContent {
+                            class: state.read()[&1].get_class(),
+                            animation: state.read()[&1].get_animation(),
+                            id: "accordion-1",
+                            p { "Check out our latest products!" }
+                        }
                     }
-                }
-                AccordionItem {
-                    AccordionTrigger { id: "accordion-2", "Services" }
-                    AccordionContent {
-                        class: state.read()[&2].get_class(),
-                        animation: state.read()[&2].get_animation(),
-                        id: "accordion-2",
-                        p { "Discover our range of services." }
+                    AccordionItem {
+                        AccordionTrigger { id: "accordion-2", "Services" }
+                        AccordionContent {
+                            class: state.read()[&2].get_class(),
+                            animation: state.read()[&2].get_animation(),
+                            id: "accordion-2",
+                            p { "Discover our range of services." }
+                        }
                     }
-                }
-                AccordionItem {
-                    AccordionTrigger { id: "accordion-3", "Testimonials" }
-                    AccordionContent {
-                        class: state.read()[&3].get_class(),
-                        animation: state.read()[&3].get_animation(),
-                        id: "accordion-3",
-                        p {
-                            "I've been a customer for over a year now and I'm extremely satisfied with their services. The team is always responsive and goes above and beyond to ensure my needs are met. Their attention to detail is impressive and I highly recommend them to anyone looking for top-notch service."
+                    AccordionItem {
+                        AccordionTrigger { id: "accordion-3", "Testimonials" }
+                        AccordionContent {
+                            class: state.read()[&3].get_class(),
+                            animation: state.read()[&3].get_animation(),
+                            id: "accordion-3",
+                            p {
+                                "I've been a customer for over a year now and I'm extremely satisfied with their services. The team is always responsive and goes above and beyond to ensure my needs are met. Their attention to detail is impressive and I highly recommend them to anyone looking for top-notch service."
+                            }
                         }
                     }
                 }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
