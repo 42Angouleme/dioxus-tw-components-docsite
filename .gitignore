@@ -1,6 +1,6 @@
 dist/
 target/
-#assets/tailwind.css
+assets/tailwind.css
 Cargo.lock
 .vscode/
 *.lock
