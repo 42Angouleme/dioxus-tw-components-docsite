@@ -32,8 +32,20 @@ jobs:
       - uses: cargo-bins/cargo-binstall@main
       - name: Install CLI
         run: cargo binstall dioxus-cli -y --force --version 0.6
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+      - name: Update npm and verify npx
+        run: |
+          npm install -g npm@latest
+          which npx || npm install -g npx
+      - name: Install project dependencies
+        run: npm install -D tailwindcss @tailwindcss/cli
       - name: Build
-        run: dx build --verbose --trace --platform web --release
+        run: |
+          npx @tailwindcss/cli -c tailwind/tailwind.config.js -i tailwind/input.css -o assets/tailwind.css
+          dx build --verbose --trace --platform web --release
       - name: Copy output
         run: cp -r target/dx/dioxus_tw_components_docsite/release/web/public docs
       - name: Add gh pages 404
