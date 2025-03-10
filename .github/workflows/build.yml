@@ -39,5 +39,6 @@ jobs:
         run: cargo binstall dioxus-cli -y --force --version 0.6
       - name: Build
         run: |
+          cargo fetch
           npx @tailwindcss/cli -c tailwind/tailwind.config.js -i tailwind/input.css -o assets/tailwind.css
           dx build --verbose --trace --platform web --release
