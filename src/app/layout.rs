@@ -9,7 +9,7 @@ use crate::app::router::Route;
 pub fn Layout() -> Element {
     let theme_manager = use_context::<Signal<ThemeManager>>();
 
-    rsx!{
+    rsx! {
         div {
             class: if theme_manager.read().current_theme == 0 { "bg-[url(background-light.svg)]" } else { "bg-[url(background-dark.svg)]" },
             class: "flex flex-col backgrounds min-h-screen",
@@ -45,7 +45,7 @@ pub fn Layout() -> Element {
 }
 
 fn DioxusLink() -> Element {
-    rsx!{
+    rsx! {
         a {
             class: "flex justify-center items-center size-10 rounded-global-radius hover:bg-foreground/30",
             href: "https://dioxuslabs.com/",
@@ -61,7 +61,7 @@ fn DioxusLink() -> Element {
 }
 
 fn GithubLink() -> Element {
-    rsx!{
+    rsx! {
         a {
             class: "flex justify-center items-center size-10 rounded-global-radius p-2 hover:bg-foreground/30",
             href: "https://github.com/42Angouleme/dioxus-tw-components",

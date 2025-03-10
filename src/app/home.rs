@@ -28,7 +28,7 @@ pub fn HomePage() -> Element {
                                     "Explore"
                                 }
                             }
-                            a { 
+                            a {
                                 href: "https://github.com/42Angouleme/dioxus-tw-components",
                                 Button {
                                     color: Color::Default,

@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
+use dioxus_tw_components::molecules::callout::{Callout, CalloutProps, CalloutVariant};
 use dioxus_tw_components::prelude::*;
-use dioxus_tw_components::molecules::callout::{CalloutProps, Callout, CalloutVariant};
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
@@ -11,7 +11,7 @@ pub fn CalloutPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!{
+    rsx! {
         PreviewFull::<CalloutProps> {}
     }
 }
@@ -24,7 +24,7 @@ impl DemoComponent for CalloutProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!{
+        rsx! {
             div { class: "flex flex-col space-y-4 w-2/3 mt-6",
                 Callout {
                     class: state.read()[&0].get_class(),
@@ -67,7 +67,7 @@ impl DemoComponent for CalloutProps {
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!{
+        rsx! {
             CompPreviewSelector::<CalloutProps> {
                 index: 0,
                 state,

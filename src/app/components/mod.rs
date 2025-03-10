@@ -7,8 +7,8 @@ pub use layout::SideBarComponent;
 
 pub mod molecules;
 use molecules::{
-    accordion::AccordionPage, breadcrumb::BreadcrumbPage, callout::CalloutPage, carousel::CarouselPage,
-    dropdown::DropdownPage, hovercard::HoverCardPage, modal::ModalPage,
+    accordion::AccordionPage, breadcrumb::BreadcrumbPage, callout::CalloutPage,
+    carousel::CarouselPage, dropdown::DropdownPage, hovercard::HoverCardPage, modal::ModalPage,
     progressbar::ProgressBarPage, scrollable::ScrollablePage, sidepanel::SidePanelPage,
     table::TablePage, toast::ToastPage,
 };
@@ -32,39 +32,39 @@ pub fn ComponentPage(name: String) -> Element {
 
     match route {
         Route::ComponentPage { name } => match name.as_str() {
-            "accordion" => rsx!{ AccordionPage {} },
-            "button" => rsx!{ ButtonPage {} },
-            "buttongroup" => rsx!{ ButtonGroupPage {} },
-            "icon" => rsx!{ IconPage {} },
-            "breadcrumb" => rsx!{ BreadcrumbPage {} },
-            "callout" => rsx!{ CalloutPage{} },
-            "carousel" => rsx!{ CarouselPage {} },
-            "dropdown" => rsx!{ DropdownPage {} },
-            "formlist" => rsx!{ FormListPage {} },
-            "hovercard" => rsx!{ HoverCardPage {} },
-            "placeholder" => rsx!{ PlaceholderPage {} },
-            "modal" => rsx!{ ModalPage {} },
-            "sidepanel" => rsx!{ SidePanelPage {} },
-            "progressbar" => rsx!{ ProgressBarPage {} },
-            "lightswitch" => rsx!{ LightSwitchPage {} },
-            "scrollable" => rsx!{ ScrollablePage {} },
-            "tabs" => rsx!{ TabsPage {} },
-            "checkbox" => rsx!{ CheckboxPage {} },
-            "input" => rsx!{ InputPage {} },
-            "radio" => rsx!{ RadioPage {} },
-            "select" => rsx!{ SelectPage {} },
-            "sortedtable" => rsx!{ SortedTablePage {} },
-            "table" => rsx!{ TablePage {} },
-            "slider" => rsx!{ SliderPage {} },
-            "textarea" => rsx!{ TextAreaPage {} },
-            "toggle" => rsx!{ TogglePage {} },
-            "toast" => rsx!{ ToastPage {} },
+            "accordion" => rsx! { AccordionPage {} },
+            "button" => rsx! { ButtonPage {} },
+            "buttongroup" => rsx! { ButtonGroupPage {} },
+            "icon" => rsx! { IconPage {} },
+            "breadcrumb" => rsx! { BreadcrumbPage {} },
+            "callout" => rsx! { CalloutPage{} },
+            "carousel" => rsx! { CarouselPage {} },
+            "dropdown" => rsx! { DropdownPage {} },
+            "formlist" => rsx! { FormListPage {} },
+            "hovercard" => rsx! { HoverCardPage {} },
+            "placeholder" => rsx! { PlaceholderPage {} },
+            "modal" => rsx! { ModalPage {} },
+            "sidepanel" => rsx! { SidePanelPage {} },
+            "progressbar" => rsx! { ProgressBarPage {} },
+            "lightswitch" => rsx! { LightSwitchPage {} },
+            "scrollable" => rsx! { ScrollablePage {} },
+            "tabs" => rsx! { TabsPage {} },
+            "checkbox" => rsx! { CheckboxPage {} },
+            "input" => rsx! { InputPage {} },
+            "radio" => rsx! { RadioPage {} },
+            "select" => rsx! { SelectPage {} },
+            "sortedtable" => rsx! { SortedTablePage {} },
+            "table" => rsx! { TablePage {} },
+            "slider" => rsx! { SliderPage {} },
+            "textarea" => rsx! { TextAreaPage {} },
+            "toggle" => rsx! { TogglePage {} },
+            "toast" => rsx! { ToastPage {} },
             _ => {
-                rsx!{ "Component not found" }
+                rsx! { "Component not found" }
             }
         },
         _ => {
-            rsx!{ "How did you got there ?" }
+            rsx! { "How did you got there ?" }
         }
     }
 }
