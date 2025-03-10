@@ -25,6 +25,10 @@ jobs:
           cache-all-crates: "true"
           cache-on-failure: "false"
       - uses: cargo-bins/cargo-binstall@main
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
       - name: Update npm and verify npx
         run: |
           npm install -g npm@latest
