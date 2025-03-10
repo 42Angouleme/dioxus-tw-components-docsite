@@ -11,7 +11,7 @@ use crate::app::doctrait::{DemoComponent, IntoVec};
 #[component]
 pub fn PreviewFull<T: DemoComponent + Default + 'static>() -> Element {
     rsx!(
-        h2 { class: "h2", "{T::to_string(&T::default())}" }
+        h2 { class: "h2 mt-12", "{T::to_string(&T::default())}" }
         PreviewDemo::<T> {}
     )
 }
@@ -209,7 +209,7 @@ pub fn PreviewWindow(children: Element) -> Element {
     rsx!(
         div {
             id: "preview-window",
-            class: "p-4 min-h-96 border border-border rounded-global-radius flex flex-col items-center space-y-8",
+            class: "p-4 min-h-96 border border-border bg-background/70 backdrop-blur-sm rounded-global-radius flex flex-col items-center space-y-8",
             {children}
         }
     )

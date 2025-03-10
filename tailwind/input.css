@@ -1,16 +1,6 @@
 @import 'tailwindcss';
 @config "./tailwind.config.js";
 
-@layer base {
-	*,
-	::after,
-	::before,
-	::backdrop,
-	::file-selector-button {
-	border-color: var(--color-gray-200, currentColor);
-	}
-}
-
 @utility scrollbar {
 	&::-webkit-scrollbar {
 		width: 8px;
@@ -30,44 +20,62 @@
 @layer base {
 	:root {
 		--background: 0deg 0% 100%;
-		--foreground: 240deg 10% 3.9%;
-		--primary: 292deg 100% 30%;
-		--primary-foreground: 355deg, 100% 97.3%;
-		--secondary: 123deg 100% 22%;
-		--secondary-foreground: 123deg 100% 70%;
-		--accent: 240deg 4.8% 95.9%;
-		--accent-foreground: 240deg 5.9% 10%;
-		--muted: 240deg 4.8% 95.9%;
-		--muted-foreground: 240deg 3.8% 46.1%;
-		--destructive: 0deg 84.2% 60.2%;
-		--destructive-foreground: 0deg 0% 98%;
-		--success: 142deg 70% 45%;
-		--success-foreground: 120deg 100% 97.3%;
-		--border: 240deg 5.9% 90%;
-		--input: 240deg 5.9% 90%;
+		--foreground: 0deg 0% 20%;
+		--primary-foreground: 0deg 0% 100%;
+		--secondary-foreground: 0deg 0% 100%;
+		--accent: 60deg 4.8% 95.9%;
+		--accent-foreground: 24deg 9.8% 10%;
+		--muted: 60deg 4.8% 95.9%;
+		--muted-foreground: 25deg 5.3% 44.7%;
+		--destructive: 0deg 84% 60%;
+		--destructive-foreground: 0deg 0% 100%;
+		--success: 100deg 65% 40%;
+		--success-secondary: 145deg 51% 66%;
+		--success-foreground: 0deg 0% 100%;
+		--border: 20deg 2% 80%;
+		--input: 20deg 5.9% 75%;
 		--ring: 240deg 10% 3.9%;
+		--primary: 190.13deg 76.19% 41.18%;
+		--secondary: 192deg 95.09% 31.96%;
 		--global-radius: 5px;
 		--global-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+		--bg-image-aspect-ratio: 2.25;
+		--bg-scale: 1.50;
+		--bg-aspect-ratio: calc(var(--bg-image-aspect-ratio) / var(--bg-scale));
+		--bg-gradient-size: calc(var(--bg-scale) * 100%);
 	}
 	.dark {
 		--background: 214.29deg 15.22% 18.04%;
 		--foreground: 0deg 0% 90%;
-		--primary: 292deg 100% 50%;
 		--primary-foreground: 0deg 0% 100%;
-		--secondary: 123deg 100% 40%;
 		--secondary-foreground: 0deg 0% 100%;
-		--accent: 240deg 5% 70%;
-		--accent-foreground: 0deg 0% 100%;
-		--muted: 240deg 5% 60%;
-		--muted-foreground: 0deg 0% 100%;
-		--destructive: 0deg 84.%, 30%;
+		--accent: 0deg 0% 25%;
+		--accent-foreground: 60deg 9.1% 97.8%;
+		--muted: 12deg 6.5% 15.1%;
+		--muted-foreground: 24deg 5.4% 63.9%;
+		--destructive: 0deg 84% 40%;
 		--destructive-foreground: 0deg 0% 100%;
-		--success: 142deg 70% 60%;
+		--success: 100deg 65% 40%;
+		--success-secondary: 145deg 51% 50%;
 		--success-foreground: 0deg 0% 100%;
-		--border: 240deg 5% 50%;
+		--border: 213.33deg 30% 11.76%;
 		--input: 240deg 5% 50%;
 		--ring: 0deg 0% 100%;
+		--primary: 190.13deg 76.19% 41.18%;
+		--secondary: 192deg 95.09% 31.96%;
 		--global-shadow: 0 1px 3px 0 rgb(255 255 255 / 0.3), 0 1px 2px -1px rgb(255 255 255 / 0.3);
+	}
+	.backgrounds {
+		min-height: 100%;
+		isolation: isolate;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+	*,
+	::before,
+	::after {
+		@apply border-border;
 	}
 	.h1 {
 		@apply text-4xl font-extrabold md:text-5xl;

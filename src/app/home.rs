@@ -48,7 +48,7 @@ pub fn HomePage() -> Element {
                         }
                     }
                 }
-                div { class: "hidden sm:flex mt-20 items-center justify-center",
+                div { class: "hidden sm:flex mt-20 items-center backdrop-blur-md justify-center",
                     Carousel { class: "w-[75%]", is_circular: true,
                         CarouselTrigger { next: false }
                         CarouselWindow {

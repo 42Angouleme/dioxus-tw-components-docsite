@@ -14,6 +14,7 @@ pub fn SideBarComponent() -> Element {
         "",
         "Accordion",
         "Breadcrumb",
+        "Callout",
         "Carousel",
         "Dropdown",
         "HoverCard",
@@ -41,7 +42,7 @@ pub fn SideBarComponent() -> Element {
         div {
             id: "component-div",
             class: "container w-full flex flex-col md:flex-row md:space-x-10 mb-12",
-            aside { id: "components-list-link", class: "hidden md:block w-48 space-y-2",
+            aside { id: "components-list-link", class: "hidden md:block bg-background/50 backdrop-blur-sm border-border border-1 rounded-global-radius p-4 w-48 space-y-2",
                 for component in components.clone() {
                     if component.is_empty() {
                         Separator {}
@@ -65,7 +66,7 @@ pub fn SideBarComponent() -> Element {
                     class: "md:hidden h-full mt-14 min-w-0 w-full sm:w-1/2 xl:w-1/3 p-0",
                     side: Side::Right,
                     div { class: "pt-14",
-                        SidePanelClose {}
+                        SidePanelClose { class: "right-[90%]" }
                         for component in components.clone() {
                             if component.is_empty() {
                                 Separator { class: "mx-auto w-64" }
