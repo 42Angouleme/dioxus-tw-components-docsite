@@ -6,7 +6,7 @@ module.exports = {
 		"../src/**/*.{rs,html,css}",
 		"./safelist.txt",
 		"../../dioxus-components/src/**/*.{rs,html,css}",
-		`${process.env.HOME}/.cargo/registry/src/**/dioxus-tw-components-*/src/**/*.{rs,html,css}`,
+		//`${process.env.HOME}/.cargo/registry/src/**/dioxus-tw-components-*/src/**/*.{rs,html,css}`,
 	],
 	theme: {
 		extend: {

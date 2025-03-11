@@ -209,7 +209,7 @@ pub fn PreviewWindow(children: Element) -> Element {
     rsx!(
         div {
             id: "preview-window",
-            class: "p-4 min-h-96 border border-border bg-background/70 backdrop-blur-sm rounded-global-radius flex flex-col items-center space-y-8",
+            class: "p-4 min-h-96 border border-border bg-background/70 rounded-global-radius flex flex-col items-center space-y-8",
             {children}
         }
     )

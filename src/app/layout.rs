@@ -13,9 +13,10 @@ pub fn Layout() -> Element {
         div {
             class: if theme_manager.read().current_theme == 0 { "bg-[url(background-light.svg)]" } else { "bg-[url(background-dark.svg)]" },
             class: "flex flex-col backgrounds min-h-screen",
-            HeaderTemplate { class: "flex z-30 justify-center",
+            HeaderTemplate { class: "flex z-30 justify-center backdrop-blur-none",
                 Navbar {
-                    div { class: "flex flex-1 space-x-2 items-center ml-6",
+                    div { class: "absolute w-full h-full bg-background/60 backdrop-blur-sm z-31" }
+                    div { class: "flex flex-1 space-x-2 items-center ml-6 z-32",
                         Link { class: "mr-6", to: "/",
                             div { class: "font-bold", "Dioxus Components" }
                         }
@@ -23,7 +24,10 @@ pub fn Layout() -> Element {
                             "Components"
                         }
                     }
-                    div { class: "flex flex-1 items-center justify-end space-x-2 mr-6",
+                    div { class: "flex flex-1 items-center justify-end space-x-2 mr-6 z-32",
+                        div { class: "mx-12",
+                            ThemePicker {}
+                        }
                         DioxusLink {}
                         GithubLink {}
                     }

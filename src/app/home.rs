@@ -48,16 +48,16 @@ pub fn HomePage() -> Element {
                         }
                     }
                 }
-                div { class: "hidden sm:flex mt-20 items-center backdrop-blur-md justify-center",
+                div { class: "hidden sm:flex mt-20 items-center justify-center",
                     Carousel { class: "w-[75%]", is_circular: true,
                         CarouselTrigger { next: false }
                         CarouselWindow {
                             CarouselContent {
                                 id: "home-components-preview",
-                                class: "align-middle",
+                                class: "align-middle backdrop-blur-md",
                                 CarouselItem {
                                     item_key: 0,
-                                    class: "bg-gradient-to-r from-foreground/10 to-foreground/20",
+                                    class: "bg-gradient-to-r from-foreground/10 to-foreground/20 backdrop-blur-md",
                                     div { class: "flex flex-row h-[6.5rem] items-center justify-center",
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             Button { "Button" }
@@ -72,7 +72,7 @@ pub fn HomePage() -> Element {
                                 }
                                 CarouselItem {
                                     item_key: 1,
-                                    class: "bg-gradient-to-r from-foreground/20 via-foreground/10 to-foreground/20",
+                                    class: "bg-gradient-to-r from-foreground/20 via-foreground/10 to-foreground/20 backdrop-blur-md",
                                     div { class: "flex flex-row h-[6.5rem] items-center justify-center",
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             Dropdown { id: "dropdown-preview-home",
@@ -106,7 +106,7 @@ pub fn HomePage() -> Element {
                                 }
                                 CarouselItem {
                                     item_key: 2,
-                                    class: "bg-gradient-to-r from-foreground/20 to-foreground/10",
+                                    class: "bg-gradient-to-r from-foreground/20 to-foreground/10 backdrop-blur-md",
                                     div { class: "flex flex-row h-[6.5rem] items-center justify-center",
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             ButtonGroup {
@@ -140,16 +140,16 @@ pub fn HomePage() -> Element {
                         CarouselTrigger { next: false }
                         CarouselWindow {
                             CarouselContent { id: "home-components-preview", class: "align-middle",
-                                CarouselItem { item_key: 0, class: "bg-gradient-to-r from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
+                                CarouselItem { item_key: 0, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
                                     Button { "Button" }
                                 }
-                                CarouselItem { item_key: 1, class: "bg-gradient-to-r from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
+                                CarouselItem { item_key: 1, class: "bg-gradient-to-r backdrop-blur-md from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
                                     Toggle {}
                                 }
-                                CarouselItem { item_key: 2, class: "bg-gradient-to-r from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
+                                CarouselItem { item_key: 2, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
                                     Slider { class: "w-24" }
                                 }
-                                CarouselItem { item_key: 3, class: "bg-gradient-to-r from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
+                                CarouselItem { item_key: 3, class: "bg-gradient-to-r backdrop-blur-md from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
                                     Dropdown { id: "dropdown-preview-home",
                                         DropdownToggle {
                                             id: "dropdown-toggle-preview-home",
@@ -161,12 +161,12 @@ pub fn HomePage() -> Element {
                                         }
                                     }
                                 }
-                                CarouselItem { item_key: 4, class: "bg-gradient-to-r from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
+                                CarouselItem { item_key: 4, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
                                     LightSwitch { class: "px-4 py-2 text-sm font-medium bg-background rounded-global-radius whitespace-nowrap hover:bg-accent hover:text-accent-foreground cursor-pointer p-1 rounded-global-radius hover:bg-foreground/40 active:bg-foreground/60",
                                         onclick: move |_| {}
                                     }
                                 }
-                                CarouselItem { item_key: 5, class: "bg-gradient-to-r from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
+                                CarouselItem { item_key: 5, class: "bg-gradient-to-r backdrop-blur-md from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
                                     HoverCard { id: "hover-card-preview-home",
                                         HoverCardTrigger {
                                             id: "hover-card-trigger-preview-home",
@@ -180,17 +180,17 @@ pub fn HomePage() -> Element {
                                         }
                                     }
                                 }
-                                CarouselItem { item_key: 6, class: "bg-gradient-to-r from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
+                                CarouselItem { item_key: 6, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
                                     ButtonGroup {
                                         ButtonGroupItem { "1" }
                                         ButtonGroupItem { "2" }
                                         ButtonGroupItem { "3" }
                                     }
                                 }
-                                CarouselItem { item_key: 7, class: "bg-gradient-to-r from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
+                                CarouselItem { item_key: 7, class: "bg-gradient-to-r backdrop-blur-md from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
                                     Placeholder {}
                                 }
-                                CarouselItem { item_key: 8, class: "bg-gradient-to-r from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
+                                CarouselItem { item_key: 8, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
                                     SelectGroup { class: "w-24",
                                         SelectPlaceholder { "Select" }
                                         SelectLabel { label: "Label 1" }
@@ -205,11 +205,6 @@ pub fn HomePage() -> Element {
                     }
                 }
             }
-        }
-        div { class: "hidden sm:block fixed italic right-0 top-[52%] pr-20 text-center",
-            Icon { class: "fixed right-12 -mt-6", icon: Icons::CallMade }
-            p { "With a theme" }
-            p { "customizer !" }
         }
     )
 }

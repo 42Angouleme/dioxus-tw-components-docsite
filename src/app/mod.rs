@@ -19,16 +19,15 @@ const FAVICON: Asset = asset!("/assets/favicon.png");
 pub fn App() -> Element {
     let theme_manager = use_context_provider(|| Signal::new(ThemeManager::default()));
 
-    rsx!(
+    rsx!{
         DioxusTwComponentsBootstrap { icon: FAVICON }
         document::Stylesheet { href: TAILWIND_CSS }
         Toaster {
             div {
                 class: "relative bg-background text-foreground",
                 style: theme_manager.read().to_style(),
-                ThemePicker {}
                 Router::<Route> {}
             }
         }
-    )
+    }
 }
