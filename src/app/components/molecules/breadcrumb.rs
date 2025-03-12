@@ -12,7 +12,9 @@ pub fn BreadcrumbPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<BreadcrumbProps> {})
+    rsx! {
+        PreviewFull::<BreadcrumbProps> {}
+    }
 }
 
 impl DemoComponent for BreadcrumbProps {
@@ -23,7 +25,7 @@ impl DemoComponent for BreadcrumbProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             Breadcrumb { class: state.read()[&0].get_class(),
                 BreadcrumbItem { class: state.read()[&1].get_class(), "Home" }
                 BreadcrumbSeparator { class: state.read()[&2].get_class() }
@@ -31,7 +33,7 @@ impl DemoComponent for BreadcrumbProps {
                 BreadcrumbSeparator { class: state.read()[&4].get_class() }
                 BreadcrumbItem { class: state.read()[&5].get_class(), "Data" }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {

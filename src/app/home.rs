@@ -6,7 +6,7 @@ pub fn HomePage() -> Element {
     let mut theme_manager = use_context::<Signal<ThemeManager>>();
     let current_theme = theme_manager.read().current_theme;
 
-    rsx!(
+    rsx! {
         section { class: "w-full mx-auto flex flex-col justify-between items-center flex-1 px-4 mb-16",
             div { class: "flex w-full max-w-screen-xl flex-col text-cente gap-2 justify-evenly",
                 div { class: "flex flex-col-reverse lg:flex-row items-center justify-end lg:justify-between lg:flex-1 flex-none",
@@ -19,7 +19,7 @@ pub fn HomePage() -> Element {
                                 "A simple but highly customizable and efficient cross-platform components library for Dioxus 0.6 based on TailwindCSS 4."
                             }
                         }
-                        div { class: "pt-8 lg:pt-16 text-[1em] flex flex-row space-x-4 mx-auto lg:mx-0 justify-center lg:justify-start",
+                        div { class: "pt-8 lg:pt-16 text-[1em] flex flex-row space-x-2 sm:space-x-4 mx-auto lg:mx-0 justify-center lg:justify-start",
                             Link { to: "/components/button",
                                 Button {
                                     color: Color::Default,
@@ -28,8 +28,7 @@ pub fn HomePage() -> Element {
                                     "Explore"
                                 }
                             }
-                            a {
-                                href: "https://github.com/42Angouleme/dioxus-tw-components",
+                            a { href: "https://github.com/42Angouleme/dioxus-tw-components",
                                 Button {
                                     color: Color::Default,
                                     variant: ButtonVariant::Outline,
@@ -54,10 +53,8 @@ pub fn HomePage() -> Element {
                         CarouselWindow {
                             CarouselContent {
                                 id: "home-components-preview",
-                                class: "align-middle backdrop-blur-md",
-                                CarouselItem {
-                                    item_key: 0,
-                                    class: "bg-gradient-to-r from-foreground/10 to-foreground/20 backdrop-blur-md",
+                                class: "align-middle",
+                                CarouselItem { item_key: 0, class: "bg-background",
                                     div { class: "flex flex-row h-[6.5rem] items-center justify-center",
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             Button { "Button" }
@@ -70,9 +67,7 @@ pub fn HomePage() -> Element {
                                         }
                                     }
                                 }
-                                CarouselItem {
-                                    item_key: 1,
-                                    class: "bg-gradient-to-r from-foreground/20 via-foreground/10 to-foreground/20 backdrop-blur-md",
+                                CarouselItem { item_key: 1, class: "bg-background",
                                     div { class: "flex flex-row h-[6.5rem] items-center justify-center",
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             Dropdown { id: "dropdown-preview-home",
@@ -104,9 +99,7 @@ pub fn HomePage() -> Element {
                                         }
                                     }
                                 }
-                                CarouselItem {
-                                    item_key: 2,
-                                    class: "bg-gradient-to-r from-foreground/20 to-foreground/10 backdrop-blur-md",
+                                CarouselItem { item_key: 2, class: "bg-background",
                                     div { class: "flex flex-row h-[6.5rem] items-center justify-center",
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             ButtonGroup {
@@ -139,64 +132,31 @@ pub fn HomePage() -> Element {
                     Carousel { class: "w-11/12", is_circular: true,
                         CarouselTrigger { next: false }
                         CarouselWindow {
-                            CarouselContent { id: "home-components-preview", class: "align-middle",
-                                CarouselItem { item_key: 0, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
+                            CarouselContent {
+                                id: "home-components-preview",
+                                class: "align-middle h-42",
+                                CarouselItem {
+                                    item_key: 0,
+                                    class: "bg-background flex flex-grow items-center justify-center",
                                     Button { "Button" }
                                 }
-                                CarouselItem { item_key: 1, class: "bg-gradient-to-r backdrop-blur-md from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
+                                CarouselItem {
+                                    item_key: 1,
+                                    class: "bg-background flex flex-grow items-center justify-center",
                                     Toggle {}
                                 }
-                                CarouselItem { item_key: 2, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
+                                CarouselItem {
+                                    item_key: 2,
+                                    class: "bg-background flex flex-grow items-center justify-center",
                                     Slider { class: "w-24" }
                                 }
-                                CarouselItem { item_key: 3, class: "bg-gradient-to-r backdrop-blur-md from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
-                                    Dropdown { id: "dropdown-preview-home",
-                                        DropdownToggle {
-                                            id: "dropdown-toggle-preview-home",
-                                            "Dropdown"
-                                        }
-                                        DropdownContent {
-                                            id: "dropdown-content-preview-home",
-                                            div { "Content" }
-                                        }
-                                    }
-                                }
-                                CarouselItem { item_key: 4, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
-                                    LightSwitch { class: "px-4 py-2 text-sm font-medium bg-background rounded-global-radius whitespace-nowrap hover:bg-accent hover:text-accent-foreground cursor-pointer p-1 rounded-global-radius hover:bg-foreground/40 active:bg-foreground/60",
-                                        onclick: move |_| {}
-                                    }
-                                }
-                                CarouselItem { item_key: 5, class: "bg-gradient-to-r backdrop-blur-md from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
-                                    HoverCard { id: "hover-card-preview-home",
-                                        HoverCardTrigger {
-                                            id: "hover-card-trigger-preview-home",
-                                            div { class: "px-4 py-2 text-sm font-medium bg-background border border-input rounded-global-radius whitespace-nowrap hover:bg-accent hover:text-accent-foreground",
-                                                "Hover me"
-                                            }
-                                        }
-                                        HoverCardContent {
-                                            id: "hover-card-content-preview-home",
-                                            div { "Content" }
-                                        }
-                                    }
-                                }
-                                CarouselItem { item_key: 6, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
+                                CarouselItem {
+                                    item_key: 3,
+                                    class: "bg-background flex flex-grow items-center justify-center",
                                     ButtonGroup {
                                         ButtonGroupItem { "1" }
                                         ButtonGroupItem { "2" }
                                         ButtonGroupItem { "3" }
-                                    }
-                                }
-                                CarouselItem { item_key: 7, class: "bg-gradient-to-r backdrop-blur-md from-foreground/20 to-foreground/10 flex flex-grow items-center justify-center",
-                                    Placeholder {}
-                                }
-                                CarouselItem { item_key: 8, class: "bg-gradient-to-r backdrop-blur-md from-foreground/10 to-foreground/20 flex flex-grow items-center justify-center",
-                                    SelectGroup { class: "w-24",
-                                        SelectPlaceholder { "Select" }
-                                        SelectLabel { label: "Label 1" }
-                                        SelectItem { "Option 1" }
-                                        SelectItem { "Option 2" }
-                                        SelectItem { "Option 3" }
                                     }
                                 }
                             }
@@ -206,5 +166,5 @@ pub fn HomePage() -> Element {
                 }
             }
         }
-    )
+    }
 }

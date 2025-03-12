@@ -12,7 +12,7 @@ pub fn SidePanelPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!{
+    rsx! {
         PreviewFull::<SidePanelProps> {}
     }
 }
@@ -25,7 +25,7 @@ impl DemoComponent for SidePanelProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!{
+        rsx! {
             SidePanel {
                 SidePanelTrigger { class: state.read()[&0].get_class(), "OpenSidePanel" }
                 SidePanelBackground {
@@ -48,7 +48,7 @@ impl DemoComponent for SidePanelProps {
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!{
+        rsx! {
             CompPreviewSelector::<SidePanelTriggerProps> {
                 index: 0,
                 state,

@@ -15,7 +15,9 @@ pub fn ScrollablePage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<ScrollableProps> {})
+    rsx! {
+        PreviewFull::<ScrollableProps> {}
+    }
 }
 
 impl DemoComponent for ScrollableProps {
@@ -26,7 +28,7 @@ impl DemoComponent for ScrollableProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             Scrollable {
                 class: state.read()[&0].get_class(),
                 orientation: state.read()[&0].get_orientation(),
@@ -55,16 +57,14 @@ impl DemoComponent for ScrollableProps {
                     p { class: "paragraph", "Address: 123 Main St, City, Country" }
                 }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<ScrollableProps> {
-            index: 0,
-            state,
-            comp_props: ScrollableProps::default()
-        })
+        rsx! {
+            CompPreviewSelector::<ScrollableProps> { index: 0, state, comp_props: ScrollableProps::default() }
+        }
     }
 }

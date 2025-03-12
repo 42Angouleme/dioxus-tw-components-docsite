@@ -12,7 +12,9 @@ pub fn TablePage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<TableProps> {})
+    rsx! {
+        PreviewFull::<TableProps> {}
+    }
 }
 
 impl DemoComponent for TableProps {
@@ -76,6 +78,6 @@ impl DemoComponent for TableProps {
     fn BuildCompSelectors() -> Element {
         let _state = use_context::<Signal<HashPreview>>();
 
-        rsx!()
+        rsx! {}
     }
 }

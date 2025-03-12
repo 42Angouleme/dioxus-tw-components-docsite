@@ -10,7 +10,9 @@ pub fn InputPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<InputProps> {})
+    rsx! {
+        PreviewFull::<InputProps> {}
+    }
 }
 
 impl DemoComponent for InputProps {
@@ -21,21 +23,21 @@ impl DemoComponent for InputProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(Input {
-            class: state.read()[&0].get_class(),
-            color: state.read()[&0].get_color(),
-            size: state.read()[&0].get_size(),
-            placeholder: "Input",
-        })
+        rsx! {
+            Input {
+                class: state.read()[&0].get_class(),
+                color: state.read()[&0].get_color(),
+                size: state.read()[&0].get_size(),
+                placeholder: "Input",
+            }
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<InputProps> {
-            index: 0,
-            state,
-            comp_props: InputProps::default()
-        })
+        rsx! {
+            CompPreviewSelector::<InputProps> { index: 0, state, comp_props: InputProps::default() }
+        }
     }
 }

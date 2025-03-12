@@ -12,7 +12,9 @@ pub fn ModalPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<ModalProps> {})
+    rsx! {
+        PreviewFull::<ModalProps> {}
+    }
 }
 
 impl DemoComponent for ModalProps {
@@ -23,7 +25,7 @@ impl DemoComponent for ModalProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             Modal {
                 ModalTrigger { class: state.read()[&0].get_class(), "OpenModal" }
                 ModalBackground {
@@ -37,13 +39,13 @@ impl DemoComponent for ModalProps {
                     div { class: "paragraph", "CONTENT" }
                 }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             CompPreviewSelector::<ModalTriggerProps> {
                 index: 0,
                 state,
@@ -60,6 +62,6 @@ impl DemoComponent for ModalProps {
                 state,
                 comp_props: ModalContentProps::default(),
             }
-        )
+        }
     }
 }

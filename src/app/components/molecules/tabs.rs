@@ -10,7 +10,9 @@ pub fn TabsPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<TabsProps> {})
+    rsx! {
+        PreviewFull::<TabsProps> {}
+    }
 }
 
 impl DemoComponent for TabsProps {
@@ -22,8 +24,10 @@ impl DemoComponent for TabsProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-        div { class: "min-h-64 items-start",
-                Tabs { default_tab: "tabs-0", class: state.read()[&0].get_class(),
+            div { class: "min-h-64 items-start",
+                Tabs {
+                    default_tab: "tabs-0",
+                    class: state.read()[&0].get_class(),
                     TabsList {
                         TabsTrigger { id: "tabs-0", "Home" }
                         TabsTrigger { id: "tabs-1", "About" }
@@ -55,10 +59,8 @@ impl DemoComponent for TabsProps {
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<TabsProps> {
-            index: 0,
-            state,
-            comp_props: TabsProps::default()
-        })
+        rsx! {
+            CompPreviewSelector::<TabsProps> { index: 0, state, comp_props: TabsProps::default() }
+        }
     }
 }

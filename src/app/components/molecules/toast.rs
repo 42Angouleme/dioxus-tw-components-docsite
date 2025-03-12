@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use dioxus_tw_components::{
     atoms::Button,
-    molecules::{toast::use_toast, Toast, ToastRenderer},
+    molecules::{Toast, ToastRenderer, toast::use_toast},
 };
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
@@ -13,7 +13,9 @@ pub fn ToastPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<Toast> {})
+    rsx! {
+        PreviewFull::<Toast> {}
+    }
 }
 
 impl DemoComponent for Toast {
@@ -26,7 +28,7 @@ impl DemoComponent for Toast {
 
         let mut toast = use_toast();
 
-        rsx!(
+        rsx! {
             Button {
                 onclick: move |_| {
                     toast
@@ -40,16 +42,14 @@ impl DemoComponent for Toast {
                 },
                 "Toasting"
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<Toast> {
-            index: 0,
-            state,
-            comp_props: Toast::default()
-        })
+        rsx! {
+            CompPreviewSelector::<Toast> { index: 0, state, comp_props: Toast::default() }
+        }
     }
 }

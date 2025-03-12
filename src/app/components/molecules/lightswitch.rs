@@ -10,7 +10,9 @@ pub fn LightSwitchPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<LightSwitchProps> {})
+    rsx! {
+        PreviewFull::<LightSwitchProps> {}
+    }
 }
 
 impl DemoComponent for LightSwitchProps {
@@ -21,18 +23,20 @@ impl DemoComponent for LightSwitchProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(LightSwitch {
-            class: state.read()[&0].get_class()
-        })
+        rsx! {
+            LightSwitch { class: state.read()[&0].get_class() }
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<LightSwitchProps> {
-            index: 0,
-            state,
-            comp_props: LightSwitchProps::default(),
-        })
+        rsx! {
+            CompPreviewSelector::<LightSwitchProps> {
+                index: 0,
+                state,
+                comp_props: LightSwitchProps::default(),
+            }
+        }
     }
 }

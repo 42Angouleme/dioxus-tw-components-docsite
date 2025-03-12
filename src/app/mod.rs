@@ -19,7 +19,7 @@ const FAVICON: Asset = asset!("/assets/favicon.png");
 pub fn App() -> Element {
     let theme_manager = use_context_provider(|| Signal::new(ThemeManager::default()));
 
-    rsx!{
+    rsx! {
         DioxusTwComponentsBootstrap { icon: FAVICON }
         document::Stylesheet { href: TAILWIND_CSS }
         Toaster {

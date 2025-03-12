@@ -23,7 +23,9 @@ pub fn CarouselPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<CarouselProps> {})
+    rsx! {
+        PreviewFull::<CarouselProps> {}
+    }
 }
 
 impl DemoComponent for CarouselProps {
@@ -34,7 +36,7 @@ impl DemoComponent for CarouselProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             Carousel { class: state.read()[&0].get_class(),
                 CarouselTrigger { next: false }
                 CarouselWindow {
@@ -58,13 +60,13 @@ impl DemoComponent for CarouselProps {
                 }
                 CarouselTrigger { next: true }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             CompPreviewSelector::<CarouselProps> { index: 0, state, comp_props: CarouselProps::default() }
             CompPreviewSelector::<CarouselItemProps> {
                 index: 1,
@@ -81,6 +83,6 @@ impl DemoComponent for CarouselProps {
                 state,
                 comp_props: CarouselItemProps::default(),
             }
-        )
+        }
     }
 }

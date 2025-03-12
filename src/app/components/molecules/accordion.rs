@@ -13,7 +13,9 @@ pub fn AccordionPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<AccordionProps> {})
+    rsx! {
+        PreviewFull::<AccordionProps> {}
+    }
 }
 
 impl DemoComponent for AccordionProps {
@@ -64,7 +66,7 @@ impl DemoComponent for AccordionProps {
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             CompPreviewSelector::<AccordionProps> { index: 0, state, comp_props: AccordionProps::default() }
             CompPreviewSelector::<AccordionContentProps> {
                 index: 1,
@@ -81,6 +83,6 @@ impl DemoComponent for AccordionProps {
                 state,
                 comp_props: AccordionContentProps::default(),
             }
-        )
+        }
     }
 }

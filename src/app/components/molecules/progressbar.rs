@@ -12,7 +12,9 @@ pub fn ProgressBarPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<ProgressBarProps> {})
+    rsx! {
+        PreviewFull::<ProgressBarProps> {}
+    }
 }
 
 impl DemoComponent for ProgressBarProps {
@@ -23,7 +25,7 @@ impl DemoComponent for ProgressBarProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             div { class: "bg-muted w-96 h-fit p-4",
                 ProgressBar {
                     class: state.read()[&0].get_class(),
@@ -35,13 +37,13 @@ impl DemoComponent for ProgressBarProps {
                     }
                 }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             CompPreviewSelector::<ProgressBarProps> {
                 index: 0,
                 state,
@@ -52,6 +54,6 @@ impl DemoComponent for ProgressBarProps {
                 state,
                 comp_props: ProgressBarInnerProps::default(),
             }
-        )
+        }
     }
 }

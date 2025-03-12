@@ -68,11 +68,7 @@ impl DemoComponent for CalloutProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<CalloutProps> {
-                index: 0,
-                state,
-                comp_props: CalloutProps::default()
-            }
+            CompPreviewSelector::<CalloutProps> { index: 0, state, comp_props: CalloutProps::default() }
         }
     }
 }

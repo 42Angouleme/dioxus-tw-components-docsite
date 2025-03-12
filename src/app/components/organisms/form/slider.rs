@@ -10,7 +10,9 @@ pub fn SliderPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<SliderProps> {})
+    rsx! {
+        PreviewFull::<SliderProps> {}
+    }
 }
 
 impl DemoComponent for SliderProps {
@@ -21,19 +23,19 @@ impl DemoComponent for SliderProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(Slider {
-            class: state.read()[&0].get_class(),
-            color: state.read()[&0].get_color(),
-        })
+        rsx! {
+            Slider {
+                class: state.read()[&0].get_class(),
+                color: state.read()[&0].get_color(),
+            }
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<SliderProps> {
-            index: 0,
-            state,
-            comp_props: SliderProps::default()
-        })
+        rsx! {
+            CompPreviewSelector::<SliderProps> { index: 0, state, comp_props: SliderProps::default() }
+        }
     }
 }

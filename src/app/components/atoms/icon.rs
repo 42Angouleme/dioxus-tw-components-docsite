@@ -10,7 +10,9 @@ pub fn IconPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<IconProps> {})
+    rsx! {
+        PreviewFull::<IconProps> {}
+    }
 }
 
 impl DemoComponent for IconProps {
@@ -45,7 +47,7 @@ impl DemoComponent for IconProps {
                         Icon {
                             class: state.read()[&0].get_class(),
                             size: state.read()[&0].get_size(),
-                            icon: icons[i]
+                            icon: icons[i],
                         }
                     }
                 }
@@ -54,7 +56,7 @@ impl DemoComponent for IconProps {
                         Icon {
                             class: state.read()[&0].get_class(),
                             size: state.read()[&0].get_size(),
-                            icon: icons[i]
+                            icon: icons[i],
                         }
                     }
                 }
@@ -66,11 +68,7 @@ impl DemoComponent for IconProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<IconProps> {
-                index: 0,
-                state,
-                comp_props: IconProps::default(),
-            }
+            CompPreviewSelector::<IconProps> { index: 0, state, comp_props: IconProps::default() }
         }
     }
 }
