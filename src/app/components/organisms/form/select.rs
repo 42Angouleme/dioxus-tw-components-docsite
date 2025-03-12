@@ -40,6 +40,7 @@ impl DemoComponent for SelectGroupProps {
         rsx! {
             CompPreviewSelector::<SelectGroupProps> {
                 index: 0,
+                title: None,
                 state,
                 comp_props: SelectGroupProps::default(),
             }

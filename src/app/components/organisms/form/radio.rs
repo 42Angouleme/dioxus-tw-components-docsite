@@ -46,7 +46,12 @@ impl DemoComponent for RadioProps {
 
         rsx! {
             for index in 0..3 {
-                CompPreviewSelector::<RadioProps> { index, state, comp_props: RadioProps::default() }
+                CompPreviewSelector::<RadioProps> {
+                    index,
+                    title: format!("Radio {index}"),
+                    state,
+                    comp_props: RadioProps::default()
+                }
             }
         }
     }

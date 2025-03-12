@@ -48,6 +48,7 @@ impl DemoComponent for CheckboxProps {
             for index in 0..3 {
                 CompPreviewSelector::<CheckboxProps> {
                     index,
+                    title: format!("Checkbox {index}"),
                     state,
                     comp_props: CheckboxProps::default(),
                 }

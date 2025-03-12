@@ -1,4 +1,4 @@
-use std::{collections::HashMap, str::FromStr};
+use std::{collections::HashMap, str::FromStr, string::String};
 
 use dioxus::prelude::*;
 use dioxus_tw_components::{
@@ -35,39 +35,45 @@ fn PreviewDemo<T: DemoComponent + Default + 'static>() -> Element {
 #[component]
 pub fn CompPreviewSelector<T: BuildClass + std::cmp::PartialEq + 'static>(
     index: i32,
+    title: Option<String>,
     mut state: Signal<HashPreview>,
     comp_props: T,
     children: Element,
 ) -> Element {
     rsx! {
-        div { class: "flex flex-row space-x-4",
-            ClassSelector { state, index }
-            if comp_props.has_color() {
-                Selector {
-                    state,
-                    index,
-                    selector_type: SelectorType::Color,
+        div { class: "flex flex-col bg-background border-border rounded-global-radius border space-y-2 p-4",
+            if title.is_some() {
+                p { "{title.clone().unwrap()}" }
+            }
+            div { class: "flex flex-col sm:flex-row justify-between space-y-4 sm:space-x-4 sm:space-y-0",
+                ClassSelector { state, index }
+                if comp_props.has_color() {
+                    Selector {
+                        state,
+                        index,
+                        selector_type: SelectorType::Color,
+                    }
                 }
-            }
-            if comp_props.has_size() {
-                Selector { state, index, selector_type: SelectorType::Size }
-            }
-            if comp_props.has_animation() {
-                Selector {
-                    state,
-                    index,
-                    selector_type: SelectorType::Animation,
+                if comp_props.has_size() {
+                    Selector { state, index, selector_type: SelectorType::Size }
                 }
-            }
-            if comp_props.has_orientation() {
-                Selector {
-                    state,
-                    index,
-                    selector_type: SelectorType::Orientation,
+                if comp_props.has_side() {
+                    Selector { state, index, selector_type: SelectorType::Side }
                 }
-            }
-            if comp_props.has_side() {
-                Selector { state, index, selector_type: SelectorType::Side }
+                if comp_props.has_animation() {
+                    Selector {
+                        state,
+                        index,
+                        selector_type: SelectorType::Animation,
+                    }
+                }
+                if comp_props.has_orientation() {
+                    Selector {
+                        state,
+                        index,
+                        selector_type: SelectorType::Orientation,
+                    }
+                }
             }
         }
     }
@@ -209,7 +215,7 @@ pub fn PreviewWindow(children: Element) -> Element {
     rsx! {
         div {
             id: "preview-window",
-            class: "p-4 min-h-96 border border-border bg-background/70 rounded-global-radius flex flex-col items-center space-y-8",
+            class: "p-4 min-h-96 border border-border bg-background/70 rounded-global-radius flex flex-col justify-center items-center space-y-2 overflow-hidden",
             {children}
         }
     }
@@ -220,7 +226,7 @@ fn PreviewWindowComponent(children: Element) -> Element {
     rsx! {
         div {
             id: "preview-window-component",
-            class: "min-h-64 min-w-80 grow flex items-center justify-center",
+            class: "min-h-64 grow flex items-center justify-center",
             {children}
         }
     }
@@ -229,7 +235,7 @@ fn PreviewWindowComponent(children: Element) -> Element {
 #[component]
 fn PreviewWindowSelectors(children: Element) -> Element {
     rsx! {
-        div { id: "preview-window-selectors", class: "flex flex-col", {children} }
+        div { id: "preview-window-selectors", class: "flex flex-col space-y-4", {children} }
     }
 }
 

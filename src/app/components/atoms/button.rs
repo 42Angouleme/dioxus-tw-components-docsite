@@ -58,7 +58,12 @@ impl DemoComponent for ButtonProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<ButtonProps> { index: 0, state, comp_props: ButtonProps::default() }
+            CompPreviewSelector::<ButtonProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: ButtonProps::default()
+            }
         }
     }
 }

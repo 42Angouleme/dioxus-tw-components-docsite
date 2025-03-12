@@ -35,7 +35,12 @@ impl DemoComponent for SliderProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<SliderProps> { index: 0, state, comp_props: SliderProps::default() }
+            CompPreviewSelector::<SliderProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: SliderProps::default()
+            }
         }
     }
 }

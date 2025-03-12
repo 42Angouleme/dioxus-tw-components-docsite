@@ -6,7 +6,7 @@ use crate::app::{components::preview::*, doctrait::DemoComponent};
 pub fn AccordionPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
-        hash.insert(0, FieldPreview::default().class("w-96".to_string()));
+        hash.insert(0, FieldPreview::default().class("max-w-96".to_string()));
         for index in 1..4 {
             hash.insert(index, FieldPreview::default());
         }
@@ -27,7 +27,7 @@ impl DemoComponent for AccordionProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            div { class: "min-h-64 mt-6 items-start",
+            div { class: "min-h-64 my-6 items-start",
                 Accordion { class: state.read()[&0].get_class(),
                     AccordionItem {
                         AccordionTrigger { id: "accordion-1", "Products" }
@@ -67,19 +67,27 @@ impl DemoComponent for AccordionProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<AccordionProps> { index: 0, state, comp_props: AccordionProps::default() }
+            CompPreviewSelector::<AccordionProps> {
+                index: 0,
+                title: "Accordion".to_string(),
+                state,
+                comp_props: AccordionProps::default()
+            }
             CompPreviewSelector::<AccordionContentProps> {
                 index: 1,
+                title: "First Content".to_string(),
                 state,
                 comp_props: AccordionContentProps::default(),
             }
             CompPreviewSelector::<AccordionContentProps> {
                 index: 2,
+                title: "Second Content".to_string(),
                 state,
                 comp_props: AccordionContentProps::default(),
             }
             CompPreviewSelector::<AccordionContentProps> {
                 index: 3,
+                title: "Third Content".to_string(),
                 state,
                 comp_props: AccordionContentProps::default(),
             }

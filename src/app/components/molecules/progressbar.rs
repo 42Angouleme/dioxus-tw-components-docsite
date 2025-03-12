@@ -6,7 +6,7 @@ use crate::app::{components::preview::*, doctrait::DemoComponent};
 pub fn ProgressBarPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
-        for index in 0..3 {
+        for index in 0..2 {
             hash.insert(index, FieldPreview::default());
         }
         Signal::new(hash)
@@ -26,7 +26,7 @@ impl DemoComponent for ProgressBarProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            div { class: "bg-muted w-96 h-fit p-4",
+            div { class: "border rounded-global-radius max-w-96 min-w-64 h-fit",
                 ProgressBar {
                     class: state.read()[&0].get_class(),
                     color: state.read()[&0].get_color(),
@@ -34,6 +34,7 @@ impl DemoComponent for ProgressBarProps {
                     ProgressBarInner {
                         class: state.read()[&1].get_class(),
                         color: state.read()[&1].get_color(),
+                        progress: 50,
                     }
                 }
             }
@@ -46,11 +47,13 @@ impl DemoComponent for ProgressBarProps {
         rsx! {
             CompPreviewSelector::<ProgressBarProps> {
                 index: 0,
+                title: "Outer Bar".to_string(),
                 state,
                 comp_props: ProgressBarProps::default(),
             }
             CompPreviewSelector::<ProgressBarInnerProps> {
                 index: 1,
+                title: "Inner Bar".to_string(),
                 state,
                 comp_props: ProgressBarInnerProps::default(),
             }

@@ -35,7 +35,12 @@ impl DemoComponent for TextAreaProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<TextAreaProps> { index: 0, state, comp_props: TextAreaProps::default() }
+            CompPreviewSelector::<TextAreaProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: TextAreaProps::default()
+            }
         }
     }
 }

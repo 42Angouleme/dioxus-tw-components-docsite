@@ -37,7 +37,12 @@ impl DemoComponent for ToggleProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<ToggleProps> { index: 0, state, comp_props: ToggleProps::default() }
+            CompPreviewSelector::<ToggleProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: ToggleProps::default()
+            }
         }
     }
 }

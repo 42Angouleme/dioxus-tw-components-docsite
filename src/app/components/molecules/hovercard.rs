@@ -46,14 +46,21 @@ impl DemoComponent for HoverCardProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<HoverCardProps> { index: 0, state, comp_props: HoverCardProps::default() }
+            CompPreviewSelector::<HoverCardProps> {
+                index: 0,
+                title: "Hover Card".to_string(),
+                state,
+                comp_props: HoverCardProps::default()
+            }
             CompPreviewSelector::<HoverCardTriggerProps> {
                 index: 1,
+                title: "Trigger".to_string(),
                 state,
                 comp_props: HoverCardTriggerProps::default(),
             }
             CompPreviewSelector::<HoverCardContentProps> {
                 index: 2,
+                title: "Content".to_string(),
                 state,
                 comp_props: HoverCardContentProps::default(),
             }

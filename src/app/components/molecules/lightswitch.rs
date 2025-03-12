@@ -34,6 +34,7 @@ impl DemoComponent for LightSwitchProps {
         rsx! {
             CompPreviewSelector::<LightSwitchProps> {
                 index: 0,
+                title: None,
                 state,
                 comp_props: LightSwitchProps::default(),
             }

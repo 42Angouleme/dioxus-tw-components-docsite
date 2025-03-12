@@ -64,7 +64,12 @@ impl DemoComponent for ScrollableProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<ScrollableProps> { index: 0, state, comp_props: ScrollableProps::default() }
+            CompPreviewSelector::<ScrollableProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: ScrollableProps::default()
+            }
         }
     }
 }

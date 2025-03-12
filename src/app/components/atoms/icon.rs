@@ -68,7 +68,12 @@ impl DemoComponent for IconProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<IconProps> { index: 0, state, comp_props: IconProps::default() }
+            CompPreviewSelector::<IconProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: IconProps::default()
+            }
         }
     }
 }

@@ -50,14 +50,21 @@ impl DemoComponent for DropdownProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<DropdownProps> { index: 0, state, comp_props: DropdownProps::default() }
+            CompPreviewSelector::<DropdownProps> {
+                index: 0,
+                title: "Dropdown".to_string(),
+                state,
+                comp_props: DropdownProps::default()
+            }
             CompPreviewSelector::<DropdownToggleProps> {
                 index: 1,
+                title: "Toggle".to_string(),
                 state,
                 comp_props: DropdownToggleProps::default(),
             }
             CompPreviewSelector::<DropdownContentProps> {
                 index: 2,
+                title: "Content".to_string(),
                 state,
                 comp_props: DropdownContentProps::default(),
             }

@@ -38,6 +38,7 @@ impl DemoComponent for PlaceholderProps {
         rsx! {
             CompPreviewSelector::<PlaceholderProps> {
                 index: 0,
+                title: None,
                 state,
                 comp_props: PlaceholderProps::default(),
             }

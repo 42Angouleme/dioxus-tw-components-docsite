@@ -31,9 +31,8 @@ impl DemoComponent for ButtonGroupProps {
                 color: state.read()[&0].get_color(),
                 size: state.read()[&0].get_size(),
                 animation: state.read()[&0].get_animation(),
-                ButtonGroupItem { "Button 1" }
-                ButtonGroupItem { "Button 2" }
-                ButtonGroupItem { "Button 3" }
+                ButtonGroupItem { "First" }
+                ButtonGroupItem { "Second" }
             }
         }
     }
@@ -44,6 +43,7 @@ impl DemoComponent for ButtonGroupProps {
         rsx! {
             CompPreviewSelector::<ButtonGroupProps> {
                 index: 0,
+                title: None,
                 state,
                 comp_props: ButtonGroupProps::default(),
             }

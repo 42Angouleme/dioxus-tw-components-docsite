@@ -49,7 +49,12 @@ impl DemoComponent for Toast {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<Toast> { index: 0, state, comp_props: Toast::default() }
+            CompPreviewSelector::<Toast> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: Toast::default()
+            }
         }
     }
 }

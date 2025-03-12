@@ -63,10 +63,10 @@ pub fn SideBarComponent() -> Element {
                 }
                 SidePanelBackground { class: "md:hidden opacity-15" }
                 SidePanelContent {
-                    class: "md:hidden h-full min-w-0 w-full p-0",
+                    class: "md:hidden h-full w-full p-0",
                     side: Side::Right,
-                    div { class: "pt-14",
-                        SidePanelClose {}
+                    SidePanelClose {}
+                    div { class: "overflow-y-auto mt-8 py-4 space-y-2 ",
                         for component in components.clone() {
                             if component.is_empty() {
                                 Separator { class: "mx-auto w-64" }
