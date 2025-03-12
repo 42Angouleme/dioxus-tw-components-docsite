@@ -25,7 +25,7 @@ impl DemoComponent for CalloutProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            div { class: "flex flex-col space-y-4 w-2/3 mt-6",
+            div { class: "flex flex-col space-y-4 sm:w-2/3 mt-6",
                 Callout {
                     class: state.read()[&0].get_class(),
                     title: "Note",
@@ -70,6 +70,7 @@ impl DemoComponent for CalloutProps {
         rsx! {
             CompPreviewSelector::<CalloutProps> {
                 index: 0,
+                title: None,
                 state,
                 comp_props: CalloutProps::default()
             }

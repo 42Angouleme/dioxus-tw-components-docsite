@@ -12,7 +12,9 @@ pub fn HoverCardPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<HoverCardProps> {})
+    rsx! {
+        PreviewFull::<HoverCardProps> {}
+    }
 }
 
 impl DemoComponent for HoverCardProps {
@@ -23,7 +25,7 @@ impl DemoComponent for HoverCardProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             HoverCard { id: "hover-card-demo", class: state.read()[&0].get_class(),
                 HoverCardTrigger {
                     id: "hover-card-trigger-demo",
@@ -37,24 +39,31 @@ impl DemoComponent for HoverCardProps {
                     div { "Content" }
                 }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
-            CompPreviewSelector::<HoverCardProps> { index: 0, state, comp_props: HoverCardProps::default() }
+        rsx! {
+            CompPreviewSelector::<HoverCardProps> {
+                index: 0,
+                title: "Hover Card".to_string(),
+                state,
+                comp_props: HoverCardProps::default()
+            }
             CompPreviewSelector::<HoverCardTriggerProps> {
                 index: 1,
+                title: "Trigger".to_string(),
                 state,
                 comp_props: HoverCardTriggerProps::default(),
             }
             CompPreviewSelector::<HoverCardContentProps> {
                 index: 2,
+                title: "Content".to_string(),
                 state,
                 comp_props: HoverCardContentProps::default(),
             }
-        )
+        }
     }
 }

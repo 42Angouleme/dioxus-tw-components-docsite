@@ -12,7 +12,9 @@ pub fn ModalPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<ModalProps> {})
+    rsx! {
+        PreviewFull::<ModalProps> {}
+    }
 }
 
 impl DemoComponent for ModalProps {
@@ -23,7 +25,7 @@ impl DemoComponent for ModalProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             Modal {
                 ModalTrigger { class: state.read()[&0].get_class(), "OpenModal" }
                 ModalBackground {
@@ -31,35 +33,47 @@ impl DemoComponent for ModalProps {
                     color: state.read()[&1].get_color(),
                     animation: state.read()[&1].get_animation(),
                 }
-                ModalContent { class: state.read()[&2].get_class(),
-                    div { ModalClose {} }
+                ModalContent { class: state.read()[&3].get_class(),
+                    div {
+                        ModalClose {
+                            class: state.read()[&2].get_class(),
+                        }
+                    }
                     div { class: "h4", "TITLE" }
                     div { class: "paragraph", "CONTENT" }
                 }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             CompPreviewSelector::<ModalTriggerProps> {
                 index: 0,
+                title: "Trigger".to_string(),
                 state,
                 comp_props: ModalTriggerProps::default(),
             }
             CompPreviewSelector::<ModalBackgroundProps> {
                 index: 1,
+                title: "Background".to_string(),
                 state,
                 comp_props: ModalBackgroundProps::default(),
             }
-            CompPreviewSelector::<ModalCloseProps> { index: 2, state, comp_props: ModalCloseProps::default() }
+            CompPreviewSelector::<ModalCloseProps> {
+                index: 2,
+                title: "Close button".to_string(),
+                state,
+                comp_props: ModalCloseProps::default()
+            }
             CompPreviewSelector::<ModalContentProps> {
                 index: 3,
+                title: "Content".to_string(),
                 state,
                 comp_props: ModalContentProps::default(),
             }
-        )
+        }
     }
 }

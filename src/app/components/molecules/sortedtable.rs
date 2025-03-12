@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use dioxus_tw_components::{
-    molecules::sorttable::{KeyType, SortTable, Sortable, SortableCell, SortableRow, ToTableData},
     Row,
+    molecules::sorttable::{KeyType, SortTable, Sortable, SortableCell, SortableRow, ToTableData},
 };
 
 #[component]

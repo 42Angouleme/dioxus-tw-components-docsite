@@ -10,7 +10,9 @@ pub fn TogglePage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<ToggleProps> {})
+    rsx! {
+        PreviewFull::<ToggleProps> {}
+    }
 }
 
 impl DemoComponent for ToggleProps {
@@ -21,21 +23,26 @@ impl DemoComponent for ToggleProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(Toggle {
-            class: state.read()[&0].get_class(),
-            color: state.read()[&0].get_color(),
-            size: state.read()[&0].get_size(),
-            animation: state.read()[&0].get_animation(),
-        })
+        rsx! {
+            Toggle {
+                class: state.read()[&0].get_class(),
+                color: state.read()[&0].get_color(),
+                size: state.read()[&0].get_size(),
+                animation: state.read()[&0].get_animation(),
+            }
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<ToggleProps> {
-            index: 0,
-            state,
-            comp_props: ToggleProps::default()
-        })
+        rsx! {
+            CompPreviewSelector::<ToggleProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: ToggleProps::default()
+            }
+        }
     }
 }

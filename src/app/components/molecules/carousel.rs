@@ -6,7 +6,7 @@ use crate::app::{components::preview::*, doctrait::DemoComponent};
 pub fn CarouselPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
-        hash.insert(0, FieldPreview::default().class("w-96".to_string()));
+        hash.insert(0, FieldPreview::default().class("max-w-96".to_string()));
         hash.insert(
             1,
             FieldPreview::default().class("bg-primary/40".to_string()),
@@ -23,7 +23,9 @@ pub fn CarouselPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<CarouselProps> {})
+    rsx! {
+        PreviewFull::<CarouselProps> {}
+    }
 }
 
 impl DemoComponent for CarouselProps {
@@ -34,7 +36,7 @@ impl DemoComponent for CarouselProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             Carousel { class: state.read()[&0].get_class(),
                 CarouselTrigger { next: false }
                 CarouselWindow {
@@ -58,29 +60,37 @@ impl DemoComponent for CarouselProps {
                 }
                 CarouselTrigger { next: true }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
-            CompPreviewSelector::<CarouselProps> { index: 0, state, comp_props: CarouselProps::default() }
+        rsx! {
+            CompPreviewSelector::<CarouselProps> {
+                index: 0,
+                title: "Carousel".to_string(),
+                state,
+                comp_props: CarouselProps::default()
+            }
             CompPreviewSelector::<CarouselItemProps> {
                 index: 1,
+                title: "First Item".to_string(),
                 state,
                 comp_props: CarouselItemProps::default(),
             }
             CompPreviewSelector::<CarouselItemProps> {
                 index: 2,
+                title: "Second Item".to_string(),
                 state,
                 comp_props: CarouselItemProps::default(),
             }
             CompPreviewSelector::<CarouselItemProps> {
                 index: 3,
+                title: "Third Item".to_string(),
                 state,
                 comp_props: CarouselItemProps::default(),
             }
-        )
+        }
     }
 }

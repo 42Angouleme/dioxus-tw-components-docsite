@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::atoms::{button::ButtonProps, Button, ButtonVariant};
+use dioxus_tw_components::atoms::{Button, ButtonVariant, button::ButtonProps};
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
@@ -10,7 +10,9 @@ pub fn ButtonPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<ButtonProps> {})
+    rsx! {
+        PreviewFull::<ButtonProps> {}
+    }
 }
 
 impl DemoComponent for ButtonProps {
@@ -22,7 +24,7 @@ impl DemoComponent for ButtonProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            div { class: "flex flex-col sm:flex-row space-x-4 space-y-4",
+            div { class: "flex flex-col sm:flex-row sm:space-x-4 space-y-4",
                 Button {
                     class: state.read()[&0].get_class(),
                     color: state.read()[&0].get_color(),
@@ -55,10 +57,13 @@ impl DemoComponent for ButtonProps {
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<ButtonProps> {
-            index: 0,
-            state,
-            comp_props: ButtonProps::default()
-        })
+        rsx! {
+            CompPreviewSelector::<ButtonProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: ButtonProps::default()
+            }
+        }
     }
 }

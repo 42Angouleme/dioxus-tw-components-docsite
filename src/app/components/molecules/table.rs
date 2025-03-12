@@ -12,7 +12,9 @@ pub fn TablePage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<TableProps> {})
+    rsx! {
+        PreviewFull::<TableProps> {}
+    }
 }
 
 impl DemoComponent for TableProps {
@@ -24,7 +26,7 @@ impl DemoComponent for TableProps {
         let _state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            div { class: "w-96 bg-muted p-4",
+            div { class: "max-w-96 border rounded-global-radius bg-background p-1",
                 Table {
                     TableCaption { "Product Inventory" }
                     TableHeader {
@@ -76,6 +78,6 @@ impl DemoComponent for TableProps {
     fn BuildCompSelectors() -> Element {
         let _state = use_context::<Signal<HashPreview>>();
 
-        rsx!()
+        rsx! {}
     }
 }

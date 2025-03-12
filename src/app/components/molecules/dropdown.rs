@@ -12,7 +12,9 @@ pub fn DropdownPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<DropdownProps> {})
+    rsx! {
+        PreviewFull::<DropdownProps> {}
+    }
 }
 
 impl DemoComponent for DropdownProps {
@@ -23,7 +25,7 @@ impl DemoComponent for DropdownProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             Dropdown { class: state.read()[&0].get_class(), id: "dropdown-demo",
                 DropdownToggle {
                     class: state.read()[&1].get_class(),
@@ -41,24 +43,31 @@ impl DemoComponent for DropdownProps {
                     div { "Content" }
                 }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
-            CompPreviewSelector::<DropdownProps> { index: 0, state, comp_props: DropdownProps::default() }
+        rsx! {
+            CompPreviewSelector::<DropdownProps> {
+                index: 0,
+                title: "Dropdown".to_string(),
+                state,
+                comp_props: DropdownProps::default()
+            }
             CompPreviewSelector::<DropdownToggleProps> {
                 index: 1,
+                title: "Toggle".to_string(),
                 state,
                 comp_props: DropdownToggleProps::default(),
             }
             CompPreviewSelector::<DropdownContentProps> {
                 index: 2,
+                title: "Content".to_string(),
                 state,
                 comp_props: DropdownContentProps::default(),
             }
-        )
+        }
     }
 }

@@ -19,7 +19,7 @@
 
 @layer base {
 	:root {
-		--background: 0deg 0% 100%;
+		--background: 0deg 0.0% 96.08%;
 		--foreground: 0deg 0% 20%;
 		--primary-foreground: 0deg 0% 100%;
 		--secondary-foreground: 0deg 0% 100%;
@@ -64,7 +64,9 @@
 		--ring: 0deg 0% 100%;
 		--primary: 190.13deg 76.19% 41.18%;
 		--secondary: 192deg 95.09% 31.96%;
-		--global-shadow: 0 1px 3px 0 rgb(255 255 255 / 0.3), 0 1px 2px -1px rgb(255 255 255 / 0.3);
+	}
+	body {
+		background-color: hsl(214.29deg 15.22% 18.04%);
 	}
 	.backgrounds {
 		min-height: 100%;
@@ -73,6 +75,8 @@
 		background-size: cover;
 	}
 	*,
+	::file-selector-button,
+	::backdrop,
 	::before,
 	::after {
 		@apply border-border;

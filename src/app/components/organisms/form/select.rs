@@ -10,7 +10,9 @@ pub fn SelectPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<SelectGroupProps> {})
+    rsx! {
+        PreviewFull::<SelectGroupProps> {}
+    }
 }
 
 impl DemoComponent for SelectGroupProps {
@@ -21,7 +23,7 @@ impl DemoComponent for SelectGroupProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(
+        rsx! {
             SelectGroup { class: state.read()[&0].get_class(),
                 SelectPlaceholder { "Select an option" }
                 SelectLabel { label: "Label 1" }
@@ -29,16 +31,19 @@ impl DemoComponent for SelectGroupProps {
                 SelectItem { "Option 2" }
                 SelectItem { "Option 3" }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<SelectGroupProps> {
-            index: 0,
-            state,
-            comp_props: SelectGroupProps::default(),
-        })
+        rsx! {
+            CompPreviewSelector::<SelectGroupProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: SelectGroupProps::default(),
+            }
+        }
     }
 }

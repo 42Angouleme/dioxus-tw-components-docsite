@@ -23,7 +23,7 @@ pub enum Route {
 
 #[component]
 pub fn NotFound(route: Vec<String>) -> Element {
-    rsx!(
+    rsx! {
         div { class: "w-[70%]",
             h1 { class: "h1", "Page not found" }
             Separator { class: "mt-5" }
@@ -43,5 +43,5 @@ pub fn NotFound(route: Vec<String>) -> Element {
                 }
             }
         }
-    )
+    }
 }

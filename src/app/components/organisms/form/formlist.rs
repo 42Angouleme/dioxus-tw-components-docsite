@@ -15,7 +15,9 @@ pub fn FormListPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<FormListProps> {})
+    rsx! {
+        PreviewFull::<FormListProps> {}
+    }
 }
 
 impl DemoComponent for FormListProps {
@@ -24,14 +26,14 @@ impl DemoComponent for FormListProps {
     }
 
     fn BuildCompPreview() -> Element {
-        let elem_to_repeat = rsx!(
+        let elem_to_repeat = rsx! {
             div { class: "space-y-2 mx-1",
                 "Field"
                 Input {}
                 Input {}
                 Separator { class: "" }
             }
-        );
+        };
 
         let list_fields = (0..6)
             .map(|_| elem_to_repeat.clone())
@@ -39,7 +41,7 @@ impl DemoComponent for FormListProps {
 
         let button_class = "w-10";
 
-        rsx!(
+        rsx! {
             FormList {
                 FormListTriggerMinus {
                     Button { class: button_class, "-" }
@@ -49,10 +51,10 @@ impl DemoComponent for FormListProps {
                 }
                 FormListContent { list_fields }
             }
-        )
+        }
     }
 
     fn BuildCompSelectors() -> Element {
-        rsx!()
+        rsx! {}
     }
 }

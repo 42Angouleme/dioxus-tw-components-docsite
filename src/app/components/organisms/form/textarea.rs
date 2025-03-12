@@ -10,7 +10,9 @@ pub fn TextAreaPage() -> Element {
         Signal::new(hash)
     });
 
-    rsx!(PreviewFull::<TextAreaProps> {})
+    rsx! {
+        PreviewFull::<TextAreaProps> {}
+    }
 }
 
 impl DemoComponent for TextAreaProps {
@@ -21,19 +23,24 @@ impl DemoComponent for TextAreaProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(TextArea {
-            class: state.read()[&0].get_class(),
-            color: state.read()[&0].get_color(),
-        })
+        rsx! {
+            TextArea {
+                class: state.read()[&0].get_class(),
+                color: state.read()[&0].get_color(),
+            }
+        }
     }
 
     fn BuildCompSelectors() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        rsx!(CompPreviewSelector::<TextAreaProps> {
-            index: 0,
-            state,
-            comp_props: TextAreaProps::default()
-        })
+        rsx! {
+            CompPreviewSelector::<TextAreaProps> {
+                index: 0,
+                title: None,
+                state,
+                comp_props: TextAreaProps::default()
+            }
+        }
     }
 }
