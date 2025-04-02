@@ -6,6 +6,7 @@ pub mod dropdown;
 pub mod hovercard;
 pub mod lightswitch;
 pub mod modal;
+pub mod pagination;
 pub mod progressbar;
 pub mod scrollable;
 pub mod sidepanel;
