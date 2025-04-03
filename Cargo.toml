@@ -6,7 +6,7 @@ authors = ["Louis Truchelut", "kbz_8", "Ziale"]
 
 [dependencies]
 dioxus = { version = "0.6.3", features = ["web", "router"] }
-dioxus-tw-components = { version = "0.1.4", features = ["theme"] }
+dioxus-tw-components = { version = "0.1.6", features = ["theme"] }
 #dioxus-tw-components = { path="../dioxus-components", features = ["theme"] }
 chrono = "0.4.39"
 
