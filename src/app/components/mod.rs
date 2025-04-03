@@ -9,8 +9,8 @@ pub mod molecules;
 use molecules::{
     accordion::AccordionPage, breadcrumb::BreadcrumbPage, callout::CalloutPage,
     carousel::CarouselPage, dropdown::DropdownPage, hovercard::HoverCardPage, modal::ModalPage,
-    progressbar::ProgressBarPage, scrollable::ScrollablePage, sidepanel::SidePanelPage,
-    table::TablePage, toast::ToastPage,
+    pagination::PaginationPage, progressbar::ProgressBarPage, scrollable::ScrollablePage,
+    sidepanel::SidePanelPage, table::TablePage, toast::ToastPage,
 };
 pub use molecules::{lightswitch::LightSwitchPage, sortedtable::SortedTablePage, tabs::TabsPage};
 
@@ -70,6 +70,9 @@ pub fn ComponentPage(name: String) -> Element {
             },
             "sidepanel" => rsx! {
                 SidePanelPage {}
+            },
+            "pagination" => rsx! {
+                PaginationPage {}
             },
             "progressbar" => rsx! {
                 ProgressBarPage {}

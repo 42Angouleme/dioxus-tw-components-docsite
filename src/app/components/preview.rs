@@ -106,6 +106,7 @@ pub enum SelectorType {
 }
 
 impl SelectorType {
+    #[allow(clippy::wrong_self_convention)]
     fn into_vec(&self) -> Vec<String> {
         match self {
             SelectorType::Color => Color::into_vec().iter().map(|c| c.to_string()).collect(),
@@ -266,7 +267,7 @@ impl FieldPreview {
     }
 
     pub fn get_color(&self) -> Color {
-        self.color.clone()
+        self.color
     }
 
     pub fn set_color(&mut self, color: Color) {
@@ -274,7 +275,7 @@ impl FieldPreview {
     }
 
     pub fn get_size(&self) -> Size {
-        self.size.clone()
+        self.size
     }
 
     pub fn set_size(&mut self, size: Size) {
@@ -282,7 +283,7 @@ impl FieldPreview {
     }
 
     pub fn get_animation(&self) -> Animation {
-        self.animation.clone()
+        self.animation
     }
 
     pub fn set_animation(&mut self, animation: Animation) {
@@ -290,7 +291,7 @@ impl FieldPreview {
     }
 
     pub fn get_orientation(&self) -> Orientation {
-        self.orientation.clone()
+        self.orientation
     }
 
     pub fn set_orientation(&mut self, orientation: Orientation) {
@@ -303,7 +304,7 @@ impl FieldPreview {
     }
 
     pub fn get_side(&self) -> Side {
-        self.side.clone()
+        self.side
     }
 
     pub fn set_side(&mut self, side: Side) {

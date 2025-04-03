@@ -21,6 +21,7 @@ pub fn SideBarComponent() -> Element {
         "LightSwitch",
         "Modal",
         "ProgressBar",
+        "Pagination",
         "Scrollable",
         "SidePanel",
         "SortedTable",

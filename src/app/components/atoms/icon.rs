@@ -23,7 +23,7 @@ impl DemoComponent for IconProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
-        let icons = vec![
+        let icons = [
             Icons::Dashboard,
             Icons::Menu,
             Icons::OpenInNew,

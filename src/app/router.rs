@@ -16,7 +16,6 @@ pub enum Route {
                 ComponentPage {name: String},
             #[end_layout]
         #[end_nest]
-
         #[route("/:..route")]
         NotFound {route: Vec<String>}
 }
