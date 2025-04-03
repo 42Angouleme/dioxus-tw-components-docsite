@@ -3,7 +3,7 @@ use dioxus_tw_components::{atoms::*, attributes::*, molecules::*, organisms::*, 
 
 #[component]
 pub fn HomePage() -> Element {
-    let mut theme_manager = use_context::<Signal<ThemeManager>>();
+    let theme_manager = use_context::<Signal<ThemeManager>>();
     let current_theme = theme_manager.read().current_theme;
 
     rsx! {

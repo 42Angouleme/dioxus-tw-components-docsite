@@ -1,7 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::atoms::buttongroup::{
-    ButtonGroup, ButtonGroupItem, ButtonGroupItemProps, ButtonGroupProps,
-};
+use dioxus_tw_components::atoms::buttongroup::{ButtonGroup, ButtonGroupItem, ButtonGroupProps};
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 

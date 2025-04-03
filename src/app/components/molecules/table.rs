@@ -4,13 +4,7 @@ use dioxus_tw_components::molecules::table::*;
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
 pub fn TablePage() -> Element {
-    let _state = use_context_provider(|| {
-        let mut hash = HashPreview::new();
-        for index in 0..0 {
-            hash.insert(index, FieldPreview::default());
-        }
-        Signal::new(hash)
-    });
+    let _state = use_context_provider(|| Signal::new(HashPreview::new()));
 
     rsx! {
         PreviewFull::<TableProps> {}
