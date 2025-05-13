@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Docsite</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+  <link rel="preload" as="style" href="/dioxus-tw-components-docsite/assets/tailwind-b9b0b0ec97e55c64.css" crossorigin><link rel="preload" as="script" href="/dioxus-tw-components-docsite/assets/dioxus_tw_components_docsite-4c9102b40d4d1059.js" crossorigin><link rel="preload" as="fetch" type="application/wasm" href="/dioxus-tw-components-docsite/assets/dioxus_tw_components_docsite_bg-9d0ca55d00f36c9a.wasm" crossorigin></head>
+  <body>
+    <div id="main"></div>
+  <script>
+            // We can't use a module script here because we need to start the script immediately when streaming
+            import("/dioxus-tw-components-docsite/assets/dioxus_tw_components_docsite-4c9102b40d4d1059.js").then(
+                ({ default: init }) => {
+                init("/dioxus-tw-components-docsite/assets/dioxus_tw_components_docsite_bg-9d0ca55d00f36c9a.wasm").then((wasm) => {
+                    if (wasm.__wbindgen_start == undefined) {
+                    wasm.main();
+                    }
+                });
+                }
+            );
+            </script>
+            
+            </body>
+</html>
