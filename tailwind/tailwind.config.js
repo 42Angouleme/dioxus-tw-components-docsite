@@ -5,7 +5,7 @@ module.exports = {
 		// include all rust, html and css files in the src directory
 		"../src/**/*.{rs,html,css}",
 		"./safelist.txt",
-		//"../../dioxus-components/src/**/*.{rs,html,css}",
+		"../../dioxus-components/src/**/*.{rs,html,css}",
 		`${process.env.HOME}/.cargo/registry/src/**/dioxus-tw-components-*/src/**/*.{rs,html,css}`,
 	],
 	theme: {
