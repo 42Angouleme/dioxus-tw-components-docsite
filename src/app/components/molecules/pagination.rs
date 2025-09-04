@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
+use dioxus_tw_components::atoms::ButtonVariant;
 use dioxus_tw_components::molecules::pagination::*;
-use dioxus_tw_components::atoms::{Button, ButtonVariant, button::ButtonProps};
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 

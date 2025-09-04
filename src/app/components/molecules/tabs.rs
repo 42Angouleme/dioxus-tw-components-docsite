@@ -6,7 +6,12 @@ use crate::app::{components::preview::*, doctrait::DemoComponent};
 pub fn TabsPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
-        hash.insert(0, FieldPreview::default().class("max-w-96".to_string()).clone());
+        hash.insert(
+            0,
+            FieldPreview::default()
+                .class("max-w-96".to_string())
+                .clone(),
+        );
         Signal::new(hash)
     });
 
