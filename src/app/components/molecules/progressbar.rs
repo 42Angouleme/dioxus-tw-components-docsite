@@ -25,6 +25,22 @@ impl DemoComponent for ProgressBarProps {
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
+        let mut progress = use_signal(|| 0);
+
+        use_effect(move || {
+            let mut timer = document::eval(
+                "setInterval(() => {
+                    dioxus.send(Math.floor(Math.random() * 30));
+                }, 1000);",
+            );
+            spawn(async move {
+                while let Ok(new_progress) = timer.recv::<usize>().await {
+                    let mut progress = progress.write();
+                    *progress = (*progress + new_progress) % 101;
+                }
+            });
+        });
+
         rsx! {
             div { class: "border rounded-global-radius max-w-96 min-w-64 h-fit",
                 ProgressBar {
@@ -34,7 +50,7 @@ impl DemoComponent for ProgressBarProps {
                     ProgressBarInner {
                         class: state.read()[&1].get_class(),
                         color: state.read()[&1].get_color(),
-                        progress: 50,
+                        progress: progress() as u8,
                     }
                 }
             }

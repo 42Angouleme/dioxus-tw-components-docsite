@@ -48,7 +48,10 @@ pub fn HomePage() -> Element {
                     }
                 }
                 div { class: "hidden sm:flex mt-20 items-center justify-center",
-                    Carousel { class: "w-[75%]", is_circular: true,
+                    Carousel {
+                        class: "w-[75%]",
+                        is_circular: true,
+                        autoscroll_duration: 2000,
                         CarouselTrigger { next: false }
                         CarouselWindow {
                             CarouselContent {

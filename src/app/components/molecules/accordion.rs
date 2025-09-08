@@ -7,9 +7,18 @@ pub fn AccordionPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
         hash.insert(0, FieldPreview::default().class("max-w-96".to_string()));
-        for index in 1..4 {
-            hash.insert(index, FieldPreview::default());
-        }
+        hash.insert(
+            1,
+            FieldPreview::default().class("border-b border-border".to_string()),
+        );
+        hash.insert(
+            2,
+            FieldPreview::default().class("border-b border-border".to_string()),
+        );
+        hash.insert(
+            3,
+            FieldPreview::default().class("border-b border-border".to_string()),
+        );
         Signal::new(hash)
     });
 

@@ -37,7 +37,10 @@ impl DemoComponent for CarouselProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            Carousel { class: state.read()[&0].get_class(),
+            Carousel {
+                class: state.read()[&0].get_class(),
+                is_circular: true,
+                autoscroll_duration: 1000,
                 CarouselTrigger { next: false }
                 CarouselWindow {
                     CarouselContent { id: "carousel-prev", class: "h-32",
