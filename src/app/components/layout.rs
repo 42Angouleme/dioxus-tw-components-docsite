@@ -37,6 +37,7 @@ pub fn SideBarComponent() -> Element {
         "Slider",
         "Textarea",
         "Toggle",
+        "Markdown",
     ];
 
     rsx! {

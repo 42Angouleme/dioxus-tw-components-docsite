@@ -5,6 +5,7 @@ pub mod carousel;
 pub mod dropdown;
 pub mod hovercard;
 pub mod lightswitch;
+pub mod markdown;
 pub mod modal;
 pub mod pagination;
 pub mod progressbar;
