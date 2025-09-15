@@ -23,7 +23,7 @@ pub use organisms::form::{
 
 pub mod preview;
 
-use crate::app::router::Route;
+use crate::app::{components::molecules::markdown::MarkdownPage, router::Route};
 use dioxus::prelude::*;
 
 #[component]
@@ -115,6 +115,9 @@ pub fn ComponentPage(name: String) -> Element {
             },
             "toast" => rsx! {
                 ToastPage {}
+            },
+            "markdown" => rsx! {
+                MarkdownPage {}
             },
             _ => {
                 rsx! { "Component not found" }
