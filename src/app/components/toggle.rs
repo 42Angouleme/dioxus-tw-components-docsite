@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::form::slider::*;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
-pub fn SliderPage() -> Element {
+pub fn TogglePage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
         hash.insert(0, FieldPreview::default());
@@ -11,22 +11,24 @@ pub fn SliderPage() -> Element {
     });
 
     rsx! {
-        PreviewFull::<SliderProps> {}
+        PreviewFull::<ToggleProps> {}
     }
 }
 
-impl DemoComponent for SliderProps {
+impl DemoComponent for ToggleProps {
     fn comp_introduction() -> &'static str {
-        "Allows users to select a value within a specified range"
+        "A customizable and interactive toggle component that allows users to switch between two states"
     }
 
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            Slider {
+            Toggle {
                 class: state.read()[&0].get_class(),
                 color: state.read()[&0].get_color(),
+                size: state.read()[&0].get_size(),
+                animation: state.read()[&0].get_animation(),
             }
         }
     }
@@ -35,11 +37,11 @@ impl DemoComponent for SliderProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<SliderProps> {
+            CompPreviewSelector::<ToggleProps> {
                 index: 0,
                 title: None,
                 state,
-                comp_props: SliderProps::default()
+                comp_props: ToggleProps::default()
             }
         }
     }

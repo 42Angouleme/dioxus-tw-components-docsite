@@ -1,20 +1,19 @@
 use chrono::Datelike;
 use dioxus::prelude::*;
 use dioxus_tw_components::prelude::*;
-use dioxus_tw_components::templates::HeaderTemplate;
 
 use crate::app::router::Route;
 
 #[component]
 pub fn Layout() -> Element {
-    let theme_manager = use_context::<Signal<ThemeManager>>();
+    //let theme_manager = use_context::<Signal<ThemeManager>>();
 
     rsx! {
         div {
-            class: if theme_manager.read().current_theme == 0 { "bg-[url(background-light.svg)]" } else { "bg-[url(background-dark.svg)]" },
+            class: if /*theme_manager.read().current_theme == 0*/ true { "bg-[url(background-light.svg)]" } else { "bg-[url(background-dark.svg)]" },
             class: "flex flex-col backgrounds min-h-screen",
-            HeaderTemplate { class: "flex z-30 justify-center backdrop-blur-none",
-                Navbar {
+            header { class: "sticky top-0 bg-background/65 backdrop-blur-sm border-b border-border flex z-30 justify-center backdrop-blur-none",
+                nav { class: "container flex h-14 max-w-(--breakpoint-2xl) items-center whitespace-nowrap",
                     div { class: "absolute left-0 w-full h-full bg-background/60 backdrop-blur-sm z-31" }
                     div { class: "flex flex-1 space-x-2 items-center ml-6 z-32",
                         Link { class: "sm:mr-6", to: "/",
@@ -27,7 +26,7 @@ pub fn Layout() -> Element {
                         }
                     }
                     div { class: "flex flex-1 items-center justify-end space-x-2 sm:mr-6 z-32",
-                        div { class: "sm:mx-12", ThemePicker {} }
+                        //div { class: "sm:mx-12", ThemePicker {} }
                         DioxusLink {}
                         GithubLink {}
                     }
@@ -36,13 +35,13 @@ pub fn Layout() -> Element {
 
             main { class: "flex justify-center w-full h-full py-12", Outlet::<Route> {} }
 
-            footer { class: "h-16 absolute bottom-0 w-full items-center overflow-hidden border-t border-border backdrop-blur bg-background/65",
-                div { class: "flex flex-row m-5",
+            footer { class: "h-9 absolute bottom-0 w-full items-center overflow-hidden bg-black text-white",
+                div { class: "flex flex-row mx-5",
                     div { class: "flex flex-col sm:flex-row sm:space-x-1",
-                        h6 { class: "h6 text-xs flex-grow", "© 2024 - {chrono::Utc::now().year()} |" }
-                        h6 { class: "h6 text-xs flex-grow", "42 Angoulême" }
+                        h6 { class: "h6 mt-2 text-xs flex-grow", "© 2024 - {chrono::Utc::now().year()} |" }
+                        h6 { class: "h6 mt-2 text-xs flex-grow", "42 Angoulême" }
                     }
-                    h6 { class: "h6 text-xs flex-grow right-0 text-right", "Made with Dioxus 0.6" }
+                    h6 { class: "h6 mt-2 text-xs flex-grow right-0 text-right", "Made with Dioxus 0.6" }
                 }
             }
         }
@@ -52,7 +51,7 @@ pub fn Layout() -> Element {
 fn DioxusLink() -> Element {
     rsx! {
         a {
-            class: "hidden sm:flex justify-center items-center size-10 rounded-global-radius hover:bg-foreground/30",
+            class: "hidden sm:flex justify-center items-center size-10 rounded-radius hover:bg-foreground/30",
             href: "https://dioxuslabs.com/",
             target: "_blank",
             alt: "link to dioxus website",
@@ -68,7 +67,7 @@ fn DioxusLink() -> Element {
 fn GithubLink() -> Element {
     rsx! {
         a {
-            class: "hidden sm:flex justify-center items-center size-10 rounded-global-radius p-2 hover:bg-foreground/30",
+            class: "hidden sm:flex justify-center items-center size-10 rounded-radius p-2 hover:bg-foreground/30",
             href: "https://github.com/42Angouleme/dioxus-tw-components",
             target: "_blank",
             svg {

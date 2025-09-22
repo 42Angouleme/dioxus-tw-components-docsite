@@ -19,26 +19,26 @@
 
 @layer base {
 	:root {
-		--background: 0deg 0.0% 96.08%;
-		--foreground: 0deg 0% 20%;
-		--primary-foreground: 0deg 0% 100%;
-		--secondary-foreground: 0deg 0% 100%;
-		--accent: 60deg 4.8% 95.9%;
-		--accent-foreground: 24deg 9.8% 10%;
-		--muted: 60deg 4.8% 95.9%;
-		--muted-foreground: 25deg 5.3% 44.7%;
-		--destructive: 0deg 84% 60%;
-		--destructive-foreground: 0deg 0% 100%;
-		--success: 100deg 65% 40%;
-		--success-secondary: 145deg 51% 66%;
-		--success-foreground: 0deg 0% 100%;
-		--border: 20deg 2% 80%;
-		--input: 20deg 5.9% 75%;
-		--ring: 240deg 10% 3.9%;
-		--primary: 190.13deg 76.19% 41.18%;
-		--secondary: 192deg 95.09% 31.96%;
-		--global-radius: 5px;
-		--global-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+		--background: hsl(0deg 0.0% 96.08%);
+		--foreground: hsl(0deg 0% 20%);
+		--primary-foreground: hsl(0deg 0% 100%);
+		--secondary-foreground: hsl(0deg 0% 100%);
+		--accent: hsl(60deg 4.8% 95.9%);
+		--accent-foreground: hsl(24deg 9.8% 10%);
+		--muted: hsl(60deg 4.8% 95.9%);
+		--muted-foreground: hsl(25deg 5.3% 44.7%);
+		--destructive: hsl(0deg 84% 60%);
+		--destructive-foreground: hsl(0deg 0% 100%);
+		--success: hsl(100deg 65% 40%);
+		--success-secondary: hsl(145deg 51% 66%);
+		--success-foreground: hsl(0deg 0% 100%);
+		--border: hsl(20deg 2% 80%);
+		--input: hsl(20deg 5.9% 75%);
+		--ring: hsl(240deg 10% 3.9%);
+		--primary: hsl(190.13deg 76.19% 41.18%);
+		--secondary: hsl(192deg 95.09% 31.96%);
+		--radius: 8px;
+		--shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 
 		--bg-image-aspect-ratio: 2.25;
 		--bg-scale: 1.50;
@@ -46,24 +46,24 @@
 		--bg-gradient-size: calc(var(--bg-scale) * 100%);
 	}
 	.dark {
-		--background: 214.29deg 15.22% 18.04%;
-		--foreground: 0deg 0% 90%;
-		--primary-foreground: 0deg 0% 100%;
-		--secondary-foreground: 0deg 0% 100%;
-		--accent: 0deg 0% 25%;
-		--accent-foreground: 60deg 9.1% 97.8%;
-		--muted: 12deg 6.5% 15.1%;
-		--muted-foreground: 24deg 5.4% 63.9%;
-		--destructive: 0deg 84% 40%;
-		--destructive-foreground: 0deg 0% 100%;
-		--success: 100deg 65% 40%;
-		--success-secondary: 145deg 51% 50%;
-		--success-foreground: 0deg 0% 100%;
-		--border: 213.33deg 30% 11.76%;
-		--input: 240deg 5% 50%;
-		--ring: 0deg 0% 100%;
-		--primary: 190.13deg 76.19% 41.18%;
-		--secondary: 192deg 95.09% 31.96%;
+		--background: hsl(214.29deg 15.22% 18.04%);
+		--foreground: hsl(0deg 0% 90%);
+		--primary-foreground: hsl(0deg 0% 100%);
+		--secondary-foreground: hsl(0deg 0% 100%);
+		--accent: hsl(0deg 0% 25%);
+		--accent-foreground: hsl(60deg 9.1% 97.8%);
+		--muted: hsl(12deg 6.5% 15.1%);
+		--muted-foreground: hsl(24deg 5.4% 63.9%);
+		--destructive: hsl(0deg 84% 40%);
+		--destructive-foreground: hsl(0deg 0% 100%);
+		--success: hsl(100deg 65% 40%);
+		--success-secondary: hsl(145deg 51% 50%);
+		--success-foreground: hsl(0deg 0% 100%);
+		--border: hsl(213.33deg 30% 11.76%);
+		--input: hsl(240deg 5% 50%);
+		--ring: hsl(0deg 0% 100%);
+		--primary: hsl(190.13deg 76.19% 41.18%);
+		--secondary: hsl(192deg 95.09% 31.96%);
 	}
 	body {
 		background-color: hsl(214.29deg 15.22% 18.04%);

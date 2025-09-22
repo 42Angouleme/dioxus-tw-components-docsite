@@ -1,26 +1,23 @@
 use std::{collections::HashMap, str::FromStr, string::String};
 
 use dioxus::prelude::*;
-use dioxus_tw_components::{
-    attributes::*,
-    form::{Input, SelectGroup, SelectItem, SelectPlaceholder},
-};
+use dioxus_tw_components::prelude::*;
 
-use crate::app::doctrait::{DemoComponent, IntoVec};
+use crate::app::doctrait::*;
 
 #[component]
-pub fn PreviewFull<T: DemoComponent + Default + 'static>() -> Element {
+pub fn PreviewFull<T: DemoComponent + 'static>() -> Element {
     rsx! {
-        h2 { class: "h2 sm:mt-12", "{T::to_string(&T::default())}" }
+        //h2 { class: "h2 sm:mt-12", "{T::to_string(&T::default())}" }
         PreviewDemo::<T> {}
     }
 }
 
 #[component]
-fn PreviewDemo<T: DemoComponent + Default + 'static>() -> Element {
+fn PreviewDemo<T: DemoComponent + 'static>() -> Element {
     rsx! {
         section { class: "w-full space-y-2",
-            h2 { id: "preview-title", class: "sr-only", {T::to_string(&T::default())} }
+            //h2 { id: "preview-title", class: "sr-only", {T::to_string(&T::default())} }
             div { id: "preview-header", class: "text-foreground/50 font-medium",
                 {T::comp_introduction()}
             }
@@ -32,42 +29,67 @@ fn PreviewDemo<T: DemoComponent + Default + 'static>() -> Element {
     }
 }
 
+#[derive(Clone, PartialEq, Eq)]
+pub struct CompProps {
+    pub has_color: bool,
+    pub has_size: bool,
+    pub has_side: bool,
+    pub has_variant: bool,
+    pub has_animation: bool,
+    pub has_orientation: bool,
+}
+
+impl std::default::Default for CompProps {
+    fn default() -> Self {
+        Self {
+            has_color: false,
+            has_size: false,
+            has_side: false,
+            has_variant: false,
+            has_animation: false,
+            has_orientation: false,
+        }
+    }
+}
+
 #[component]
-pub fn CompPreviewSelector<T: BuildClass + std::cmp::PartialEq + 'static>(
+pub fn CompPreviewSelector(
     index: i32,
     title: Option<String>,
     mut state: Signal<HashPreview>,
-    comp_props: T,
-    children: Element,
+    comp_props: CompProps
 ) -> Element {
     rsx! {
-        div { class: "flex flex-col bg-background border-border rounded-global-radius border space-y-2 p-4",
+        div { class: "flex flex-col bg-background border-border rounded-radius border space-y-2 p-4",
             if title.is_some() {
                 p { "{title.clone().unwrap()}" }
             }
             div { class: "flex flex-col sm:flex-row justify-between space-y-4 sm:space-x-4 sm:space-y-0",
                 ClassSelector { state, index }
-                if comp_props.has_color() {
+                if comp_props.has_color {
                     Selector {
                         state,
                         index,
                         selector_type: SelectorType::Color,
                     }
                 }
-                if comp_props.has_size() {
+                if comp_props.has_size {
                     Selector { state, index, selector_type: SelectorType::Size }
                 }
-                if comp_props.has_side() {
+                if comp_props.has_side {
                     Selector { state, index, selector_type: SelectorType::Side }
                 }
-                if comp_props.has_animation() {
+                if comp_props.has_variant {
+                    Selector { state, index, selector_type: SelectorType::Variant }
+                }
+                if comp_props.has_animation {
                     Selector {
                         state,
                         index,
                         selector_type: SelectorType::Animation,
                     }
                 }
-                if comp_props.has_orientation() {
+                if comp_props.has_orientation {
                     Selector {
                         state,
                         index,
@@ -103,6 +125,7 @@ pub enum SelectorType {
     Animation,
     Orientation,
     Side,
+    Variant,
 }
 
 impl SelectorType {
@@ -119,6 +142,7 @@ impl SelectorType {
                 .iter()
                 .map(|s| s.to_string())
                 .collect(),
+            SelectorType::Variant => Variant::into_vec().iter().map(|s| s.to_string()).collect(),
             SelectorType::Side => Side::into_vec().iter().map(|s| s.to_string()).collect(),
         }
     }
@@ -136,6 +160,9 @@ impl SelectorType {
             }
             SelectorType::Orientation => {
                 field_preview.set_orientation(Orientation::from_str(value).unwrap_or_default());
+            }
+            SelectorType::Variant => {
+                field_preview.set_variant(Variant::from_str(value).unwrap_or_default());
             }
             SelectorType::Side => {
                 field_preview.set_side(Side::from_str(value).unwrap_or_default());
@@ -155,6 +182,9 @@ impl std::fmt::Display for SelectorType {
                 }
                 SelectorType::Size => {
                     "Size"
+                }
+                SelectorType::Variant => {
+                    "Variant"
                 }
                 SelectorType::Animation => {
                     "Animation"
@@ -216,7 +246,7 @@ pub fn PreviewWindow(children: Element) -> Element {
     rsx! {
         div {
             id: "preview-window",
-            class: "p-4 min-h-96 border border-border bg-background/70 rounded-global-radius flex flex-col justify-center items-center space-y-2 overflow-hidden",
+            class: "p-4 min-h-96 border border-border bg-background/70 rounded-radius flex flex-col justify-center items-center space-y-2 overflow-hidden",
             {children}
         }
     }
@@ -247,6 +277,7 @@ pub struct FieldPreview {
     class: String,
     color: Color,
     size: Size,
+    variant: Variant,
     animation: Animation,
     orientation: Orientation,
     side: Side,
@@ -309,5 +340,13 @@ impl FieldPreview {
 
     pub fn set_side(&mut self, side: Side) {
         self.side = side;
+    }
+
+    pub fn get_variant(&self) -> Variant {
+        self.variant
+    }
+
+    pub fn set_variant(&mut self, variant: Variant) {
+        self.variant = variant;
     }
 }

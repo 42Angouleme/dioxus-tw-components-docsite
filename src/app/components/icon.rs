@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::atoms::icon::*;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
@@ -46,7 +46,6 @@ impl DemoComponent for IconProps {
                     for i in 0..(icons.len() / 2) {
                         Icon {
                             class: state.read()[&0].get_class(),
-                            size: state.read()[&0].get_size(),
                             icon: icons[i],
                         }
                     }
@@ -55,7 +54,6 @@ impl DemoComponent for IconProps {
                     for i in (icons.len() / 2)..icons.len() {
                         Icon {
                             class: state.read()[&0].get_class(),
-                            size: state.read()[&0].get_size(),
                             icon: icons[i],
                         }
                     }
@@ -68,11 +66,11 @@ impl DemoComponent for IconProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<IconProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: IconProps::default()
+                comp_props: CompProps::default(),
             }
         }
     }

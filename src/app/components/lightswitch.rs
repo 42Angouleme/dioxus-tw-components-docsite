@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::form::input::*;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
-pub fn InputPage() -> Element {
+pub fn LightSwitchPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
         hash.insert(0, FieldPreview::default());
@@ -11,25 +11,20 @@ pub fn InputPage() -> Element {
     });
 
     rsx! {
-        PreviewFull::<InputProps> {}
+        PreviewFull::<LightSwitchProps> {}
     }
 }
 
-impl DemoComponent for InputProps {
+impl DemoComponent for LightSwitchProps {
     fn comp_introduction() -> &'static str {
-        "A customizable and interactive input component"
+        "Turn off the light !"
     }
 
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            Input {
-                class: state.read()[&0].get_class(),
-                color: state.read()[&0].get_color(),
-                size: state.read()[&0].get_size(),
-                placeholder: "Input",
-            }
+            LightSwitch { class: state.read()[&0].get_class() }
         }
     }
 
@@ -37,11 +32,11 @@ impl DemoComponent for InputProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<InputProps> {
+            CompPreviewSelector::<LightSwitchProps> {
                 index: 0,
                 title: None,
                 state,
-                comp_props: InputProps::default()
+                comp_props: LightSwitchProps::default(),
             }
         }
     }

@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::molecules::hovercard::*;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
@@ -35,7 +35,7 @@ impl DemoComponent for HoverCardProps {
                 HoverCardContent {
                     id: "hover-card-content-demo",
                     class: state.read()[&2].get_class(),
-                    animation: state.read()[&2].get_animation(),
+                    "data-animation": state.read()[&2].get_animation().to_string(),
                     div { "Content" }
                 }
             }
@@ -46,23 +46,30 @@ impl DemoComponent for HoverCardProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<HoverCardProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: "Hover Card".to_string(),
                 state,
-                comp_props: HoverCardProps::default()
+                comp_props: CompProps::default(),
             }
-            CompPreviewSelector::<HoverCardTriggerProps> {
+            CompPreviewSelector {
                 index: 1,
                 title: "Trigger".to_string(),
                 state,
-                comp_props: HoverCardTriggerProps::default(),
+                comp_props: CompProps::default(),
             }
-            CompPreviewSelector::<HoverCardContentProps> {
+            CompPreviewSelector {
                 index: 2,
                 title: "Content".to_string(),
                 state,
-                comp_props: HoverCardContentProps::default(),
+                comp_props: CompProps {
+                    has_color: false,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: true,
+                    has_orientation: false,
+                },
             }
         }
     }

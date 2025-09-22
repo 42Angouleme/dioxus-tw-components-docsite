@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::molecules::lightswitch::*;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
-pub fn LightSwitchPage() -> Element {
+pub fn PlaceholderPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
         hash.insert(0, FieldPreview::default());
@@ -11,20 +11,24 @@ pub fn LightSwitchPage() -> Element {
     });
 
     rsx! {
-        PreviewFull::<LightSwitchProps> {}
+        PreviewFull::<PlaceholderProps> {}
     }
 }
 
-impl DemoComponent for LightSwitchProps {
+impl DemoComponent for PlaceholderProps {
     fn comp_introduction() -> &'static str {
-        "Turn off the light !"
+        "A customizable and versatile placeholder for text, images, or other content"
     }
 
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            LightSwitch { class: state.read()[&0].get_class() }
+            Placeholder {
+                class: state.read()[&0].get_class(),
+                color: state.read()[&0].get_color(),
+                animation: state.read()[&0].get_animation(),
+            }
         }
     }
 
@@ -32,11 +36,11 @@ impl DemoComponent for LightSwitchProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<LightSwitchProps> {
+            CompPreviewSelector::<PlaceholderProps> {
                 index: 0,
                 title: None,
                 state,
-                comp_props: LightSwitchProps::default(),
+                comp_props: PlaceholderProps::default(),
             }
         }
     }

@@ -1,8 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::{
-    atoms::Button,
-    molecules::{Toast, ToastRenderer, toast::use_toast},
-};
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 

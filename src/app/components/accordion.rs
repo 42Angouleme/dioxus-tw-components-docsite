@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::molecules::accordion::*;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
@@ -42,7 +42,7 @@ impl DemoComponent for AccordionProps {
                         AccordionTrigger { id: "accordion-1", "Products" }
                         AccordionContent {
                             class: state.read()[&1].get_class(),
-                            animation: state.read()[&1].get_animation(),
+                            "data-animation": state.read()[&1].get_animation().to_string(),
                             id: "accordion-1",
                             p { "Check out our latest products!" }
                         }
@@ -51,7 +51,7 @@ impl DemoComponent for AccordionProps {
                         AccordionTrigger { id: "accordion-2", "Services" }
                         AccordionContent {
                             class: state.read()[&2].get_class(),
-                            animation: state.read()[&2].get_animation(),
+                            "data-animation": state.read()[&2].get_animation().to_string(),
                             id: "accordion-2",
                             p { "Discover our range of services." }
                         }
@@ -60,7 +60,7 @@ impl DemoComponent for AccordionProps {
                         AccordionTrigger { id: "accordion-3", "Testimonials" }
                         AccordionContent {
                             class: state.read()[&3].get_class(),
-                            animation: state.read()[&3].get_animation(),
+                            "data-animation": state.read()[&3].get_animation().to_string(),
                             id: "accordion-3",
                             p {
                                 "I've been a customer for over a year now and I'm extremely satisfied with their services. The team is always responsive and goes above and beyond to ensure my needs are met. Their attention to detail is impressive and I highly recommend them to anyone looking for top-notch service."
@@ -76,29 +76,50 @@ impl DemoComponent for AccordionProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<AccordionProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: "Accordion".to_string(),
                 state,
-                comp_props: AccordionProps::default()
+                comp_props: CompProps::default(),
             }
-            CompPreviewSelector::<AccordionContentProps> {
+            CompPreviewSelector {
                 index: 1,
                 title: "First Content".to_string(),
                 state,
-                comp_props: AccordionContentProps::default(),
+                comp_props: CompProps {
+                    has_color: false,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: true,
+                    has_orientation: false,
+                },
             }
-            CompPreviewSelector::<AccordionContentProps> {
+            CompPreviewSelector {
                 index: 2,
                 title: "Second Content".to_string(),
                 state,
-                comp_props: AccordionContentProps::default(),
+                comp_props: CompProps {
+                    has_color: false,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: true,
+                    has_orientation: false,
+                },
             }
-            CompPreviewSelector::<AccordionContentProps> {
+            CompPreviewSelector {
                 index: 3,
                 title: "Third Content".to_string(),
                 state,
-                comp_props: AccordionContentProps::default(),
+                comp_props: CompProps {
+                    has_color: false,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: true,
+                    has_orientation: false,
+                },
             }
         }
     }

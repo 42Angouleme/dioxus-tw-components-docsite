@@ -1,14 +1,18 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::{atoms::Separator, molecules::dropdown::*};
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
 pub fn DropdownPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
-        for index in 0..3 {
-            hash.insert(index, FieldPreview::default());
-        }
+        hash.insert(0, FieldPreview::default());
+        hash.insert(
+            1,
+            FieldPreview::default()
+                .class("p-2".to_string()),
+        );
+        hash.insert(2, FieldPreview::default());
         Signal::new(hash)
     });
 
@@ -35,7 +39,7 @@ impl DemoComponent for DropdownProps {
                 DropdownContent {
                     id: "dropdown-content-demo",
                     class: state.read()[&2].get_class(),
-                    animation: state.read()[&2].get_animation(),
+                    "data-animation": state.read()[&2].get_animation().to_string(),
                     div { "Content" }
                     div { "Content" }
                     Separator {}
@@ -50,23 +54,37 @@ impl DemoComponent for DropdownProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<DropdownProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: "Dropdown".to_string(),
                 state,
-                comp_props: DropdownProps::default()
+                comp_props: CompProps::default(),
             }
-            CompPreviewSelector::<DropdownToggleProps> {
+            CompPreviewSelector {
                 index: 1,
                 title: "Toggle".to_string(),
                 state,
-                comp_props: DropdownToggleProps::default(),
+                comp_props: CompProps{
+                    has_color: false,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: true,
+                    has_orientation: false,
+                },
             }
-            CompPreviewSelector::<DropdownContentProps> {
+            CompPreviewSelector {
                 index: 2,
                 title: "Content".to_string(),
                 state,
-                comp_props: DropdownContentProps::default(),
+                comp_props: CompProps{
+                    has_color: false,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: true,
+                    has_orientation: false,
+                },
             }
         }
     }

@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::molecules::sorttable::{SortTable, SortableCell, SortableRow};
+use dioxus_tw_components::prelude::*;
 
 #[component]
 pub fn SortedTablePage() -> Element {

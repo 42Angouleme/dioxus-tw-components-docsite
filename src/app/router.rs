@@ -2,7 +2,7 @@ use super::components::*;
 use super::home::HomePage;
 use super::layout::Layout;
 use dioxus::prelude::*;
-use dioxus_tw_components::atoms::Separator;
+use dioxus_tw_components::Separator;
 
 #[derive(Routable, Clone)]
 #[rustfmt::skip]

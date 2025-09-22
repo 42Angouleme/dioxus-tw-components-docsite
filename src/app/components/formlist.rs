@@ -1,9 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::{
-    atoms::{Button, Separator},
-    form::*,
-};
-use formlist::FormListProps;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 

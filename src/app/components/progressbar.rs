@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::molecules::progressbar::*;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
@@ -42,7 +42,7 @@ impl DemoComponent for ProgressBarProps {
         });
 
         rsx! {
-            div { class: "border rounded-global-radius max-w-96 min-w-64 h-fit",
+            div { class: "border rounded-radius max-w-96 min-w-64 h-fit",
                 ProgressBar {
                     class: state.read()[&0].get_class(),
                     color: state.read()[&0].get_color(),

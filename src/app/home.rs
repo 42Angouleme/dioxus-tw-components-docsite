@@ -1,10 +1,10 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::{atoms::*, attributes::*, molecules::*, organisms::*, theme::*};
+use dioxus_tw_components::prelude::*;
 
 #[component]
 pub fn HomePage() -> Element {
-    let theme_manager = use_context::<Signal<ThemeManager>>();
-    let current_theme = theme_manager.read().current_theme;
+    //let theme_manager = use_context::<Signal<ThemeManager>>();
+    //let current_theme = theme_manager.read().current_theme;
 
     rsx! {
         section { class: "w-full mx-auto flex flex-col justify-between items-center flex-1 px-4 mb-16",
@@ -22,18 +22,16 @@ pub fn HomePage() -> Element {
                         div { class: "pt-8 lg:pt-16 text-[1em] flex flex-row space-x-2 sm:space-x-4 mx-auto lg:mx-0 justify-center lg:justify-start",
                             Link { to: "/components/button",
                                 Button {
-                                    color: Color::Default,
-                                    size: Size::Lg,
-                                    animation: Animation::Full,
+                                    "data-size": "lg",
+                                    "data-animation": "full",
                                     "Explore"
                                 }
                             }
                             a { href: "https://github.com/42Angouleme/dioxus-tw-components",
                                 Button {
-                                    color: Color::Default,
-                                    variant: ButtonVariant::Outline,
-                                    size: Size::Lg,
-                                    animation: Animation::Full,
+                                    "data-size": "lg",
+                                    "data-animation": "full",
+                                    "data-variant": "outline",
                                     "See sources"
                                 }
                             }
@@ -41,12 +39,13 @@ pub fn HomePage() -> Element {
                     }
                     div { class: "lg:pb-12 h-screen max-h-40 lg:max-h-80 my-8",
                         img {
-                            src: if current_theme == 0 { asset!("/assets/multiplatform-dark.svg") } else { asset!("/assets/multiplatform-light.svg") },
+                            src: if /*current_theme == 0*/ true { asset!("/assets/multiplatform-dark.svg") } else { asset!("/assets/multiplatform-light.svg") },
                             class: "w-full h-full",
                             alt: "Animated Icon",
                         }
                     }
                 }
+                /*
                 div { class: "hidden sm:flex mt-20 items-center justify-center",
                     Carousel {
                         class: "w-[75%]",
@@ -84,14 +83,14 @@ pub fn HomePage() -> Element {
                                         }
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             LightSwitch {
-                                                class: "px-4 py-2 text-sm font-medium bg-background rounded-global-radius whitespace-nowrap hover:bg-accent hover:text-accent-foreground cursor-pointer p-1 rounded-global-radius hover:bg-foreground/40 active:bg-foreground/60",
+                                                class: "px-4 py-2 text-sm font-medium bg-background rounded-radius whitespace-nowrap hover:bg-accent hover:text-accent-foreground cursor-pointer p-1 rounded-radius hover:bg-foreground/40 active:bg-foreground/60",
                                                 onclick: move |_| {},
                                             }
                                         }
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             HoverCard { id: "hover-card-preview-home",
                                                 HoverCardTrigger { id: "hover-card-trigger-preview-home",
-                                                    div { class: "px-4 py-2 text-sm font-medium bg-background border border-input rounded-global-radius whitespace-nowrap hover:bg-accent hover:text-accent-foreground",
+                                                    div { class: "px-4 py-2 text-sm font-medium bg-background border border-input rounded--radius whitespace-nowrap hover:bg-accent hover:text-accent-foreground",
                                                         "Hover me"
                                                     }
                                                 }
@@ -167,6 +166,7 @@ pub fn HomePage() -> Element {
                         CarouselTrigger { next: true }
                     }
                 }
+                */
             }
         }
     }

@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::molecules::table::*;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
@@ -20,7 +20,7 @@ impl DemoComponent for TableProps {
         let _state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            div { class: "max-w-96 border rounded-global-radius bg-background p-1",
+            div { class: "max-w-96 border rounded-radius bg-background p-1",
                 Table {
                     TableCaption { "Product Inventory" }
                     TableHeader {

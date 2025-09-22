@@ -1,5 +1,4 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::molecules::callout::{Callout, CalloutProps, CalloutVariant};
 use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
@@ -29,28 +28,28 @@ impl DemoComponent for CalloutProps {
                 Callout {
                     class: state.read()[&0].get_class(),
                     title: "Note",
-                    variant: CalloutVariant::Note,
+                    "data-variant": "note",
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nisl nunc aliquet nisl, vel aliquet nunc nisl vel nisl"
                 }
 
                 Callout {
                     class: state.read()[&0].get_class(),
                     title: "Tip",
-                    variant: CalloutVariant::Tip,
+                    "data-variant": "tip",
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nisl nunc aliquet nisl, vel aliquet nunc nisl vel nisl"
                 }
 
                 Callout {
                     class: state.read()[&0].get_class(),
                     title: "Warning",
-                    variant: CalloutVariant::Warning,
+                    "data-variant": "warning",
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nisl nunc aliquet nisl, vel aliquet nunc nisl vel nisl"
                 }
 
                 Callout {
                     class: state.read()[&0].get_class(),
                     title: "Caution",
-                    variant: CalloutVariant::Caution,
+                    "data-variant": "caution",
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel tincidunt lacinia, nisl nunc aliquet nisl, vel aliquet nunc nisl vel nisl"
                 }
 
@@ -68,11 +67,11 @@ impl DemoComponent for CalloutProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<CalloutProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: CalloutProps::default()
+                comp_props: CompProps::default(),
             }
         }
     }

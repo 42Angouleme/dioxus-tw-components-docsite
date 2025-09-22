@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::atoms::{Placeholder, placeholder::PlaceholderProps};
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
-pub fn PlaceholderPage() -> Element {
+pub fn SliderPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
         hash.insert(0, FieldPreview::default());
@@ -11,23 +11,22 @@ pub fn PlaceholderPage() -> Element {
     });
 
     rsx! {
-        PreviewFull::<PlaceholderProps> {}
+        PreviewFull::<SliderProps> {}
     }
 }
 
-impl DemoComponent for PlaceholderProps {
+impl DemoComponent for SliderProps {
     fn comp_introduction() -> &'static str {
-        "A customizable and versatile placeholder for text, images, or other content"
+        "Allows users to select a value within a specified range"
     }
 
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            Placeholder {
+            Slider {
                 class: state.read()[&0].get_class(),
                 color: state.read()[&0].get_color(),
-                animation: state.read()[&0].get_animation(),
             }
         }
     }
@@ -36,11 +35,11 @@ impl DemoComponent for PlaceholderProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<PlaceholderProps> {
+            CompPreviewSelector::<SliderProps> {
                 index: 0,
                 title: None,
                 state,
-                comp_props: PlaceholderProps::default(),
+                comp_props: SliderProps::default()
             }
         }
     }

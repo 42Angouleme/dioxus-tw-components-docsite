@@ -5,10 +5,12 @@ edition = "2024"
 authors = ["Louis Truchelut", "kbz_8", "Ziale"]
 
 [dependencies]
-dioxus = { version = "0.6.3", features = ["web", "router"] }
-dioxus-tw-components = { version = "0.1.14", features = ["theme"] }
-#dioxus-tw-components = { path="../dioxus-components", features = ["theme"] }
+dioxus = { version = "0.7.0-rc.0", features = ["web", "router"] }
+#dioxus-tw-components = { version = "0.1.14", features = ["theme"] }
+dioxus-tw-components = { path="../dioxus-components" }
 chrono = "0.4.39"
+strum = "0.27.2"
+strum_macros = "0.27"
 
 [workspace]
 

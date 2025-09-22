@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::atoms::buttongroup::{ButtonGroup, ButtonGroupItem, ButtonGroupProps};
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
-pub fn ButtonGroupPage() -> Element {
+pub fn InputPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
         hash.insert(0, FieldPreview::default());
@@ -11,26 +11,24 @@ pub fn ButtonGroupPage() -> Element {
     });
 
     rsx! {
-        PreviewFull::<ButtonGroupProps> {}
+        PreviewFull::<InputProps> {}
     }
 }
 
-impl DemoComponent for ButtonGroupProps {
+impl DemoComponent for InputProps {
     fn comp_introduction() -> &'static str {
-        "A simple customizable group of buttons"
+        "A customizable and interactive input component"
     }
 
     fn BuildCompPreview() -> Element {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            ButtonGroup {
+            Input {
                 class: state.read()[&0].get_class(),
                 color: state.read()[&0].get_color(),
                 size: state.read()[&0].get_size(),
-                animation: state.read()[&0].get_animation(),
-                ButtonGroupItem { "First" }
-                ButtonGroupItem { "Second" }
+                placeholder: "Input",
             }
         }
     }
@@ -39,11 +37,11 @@ impl DemoComponent for ButtonGroupProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<ButtonGroupProps> {
+            CompPreviewSelector::<InputProps> {
                 index: 0,
                 title: None,
                 state,
-                comp_props: ButtonGroupProps::default(),
+                comp_props: InputProps::default()
             }
         }
     }

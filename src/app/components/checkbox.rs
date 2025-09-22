@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
-use dioxus_tw_components::form::radio::*;
+use dioxus_tw_components::prelude::*;
 
 use crate::app::{components::preview::*, doctrait::DemoComponent};
 
-pub fn RadioPage() -> Element {
+pub fn CheckboxPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
         hash.insert(0, FieldPreview::default());
@@ -13,13 +13,13 @@ pub fn RadioPage() -> Element {
     });
 
     rsx! {
-        PreviewFull::<RadioProps> {}
+        PreviewFull::<CheckboxProps> {}
     }
 }
 
-impl DemoComponent for RadioProps {
+impl DemoComponent for CheckboxProps {
     fn comp_introduction() -> &'static str {
-        "A customizable and interactive radio component"
+        "A customizable and interactive checkbox component"
     }
 
     fn BuildCompPreview() -> Element {
@@ -30,10 +30,8 @@ impl DemoComponent for RadioProps {
                 for i in 0..3 {
                     div { class: "flex flex-col items-center space-y-2",
                         p { class: "text-foreground font-bold", "{i}" }
-                        Radio {
+                        Checkbox {
                             class: state.read()[&i].get_class(),
-                            color: state.read()[&i].get_color(),
-                            size: state.read()[&i].get_size(),
                         }
                     }
                 }
@@ -46,11 +44,11 @@ impl DemoComponent for RadioProps {
 
         rsx! {
             for index in 0..3 {
-                CompPreviewSelector::<RadioProps> {
+                CompPreviewSelector {
                     index,
-                    title: format!("Radio {index}"),
+                    title: format!("Checkbox {index}"),
                     state,
-                    comp_props: RadioProps::default()
+                    comp_props: CompProps::default(),
                 }
             }
         }
