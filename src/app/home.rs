@@ -3,8 +3,8 @@ use dioxus_tw_components::prelude::*;
 
 #[component]
 pub fn HomePage() -> Element {
-    //let theme_manager = use_context::<Signal<ThemeManager>>();
-    //let current_theme = theme_manager.read().current_theme;
+    let theme_manager = use_context::<Signal<ThemeManager>>();
+    let current_theme = theme_manager.read().current_theme;
 
     rsx! {
         section { class: "w-full mx-auto flex flex-col justify-between items-center flex-1 px-4 mb-16",
@@ -39,13 +39,12 @@ pub fn HomePage() -> Element {
                     }
                     div { class: "lg:pb-12 h-screen max-h-40 lg:max-h-80 my-8",
                         img {
-                            src: if /*current_theme == 0*/ true { asset!("/assets/multiplatform-dark.svg") } else { asset!("/assets/multiplatform-light.svg") },
+                            src: if current_theme == 0 { asset!("/assets/multiplatform-dark.svg") } else { asset!("/assets/multiplatform-light.svg") },
                             class: "w-full h-full",
                             alt: "Animated Icon",
                         }
                     }
                 }
-                /*
                 div { class: "hidden sm:flex mt-20 items-center justify-center",
                     Carousel {
                         class: "w-[75%]",
@@ -62,10 +61,10 @@ pub fn HomePage() -> Element {
                                             Button { "Button" }
                                         }
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
-                                            Toggle {}
+                                            Toggle { class: "!w-12" }
                                         }
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
-                                            Slider { class: "w-24" }
+                                            Slider { class: "!w-24" }
                                         }
                                     }
                                 }
@@ -90,7 +89,7 @@ pub fn HomePage() -> Element {
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             HoverCard { id: "hover-card-preview-home",
                                                 HoverCardTrigger { id: "hover-card-trigger-preview-home",
-                                                    div { class: "px-4 py-2 text-sm font-medium bg-background border border-input rounded--radius whitespace-nowrap hover:bg-accent hover:text-accent-foreground",
+                                                    div { class: "px-4 py-2 text-sm font-medium whitespace-nowrap",
                                                         "Hover me"
                                                     }
                                                 }
@@ -105,16 +104,16 @@ pub fn HomePage() -> Element {
                                     div { class: "flex flex-row h-[6.5rem] items-center justify-center",
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             ButtonGroup {
-                                                ButtonGroupItem { "1" }
-                                                ButtonGroupItem { "2" }
-                                                ButtonGroupItem { "3" }
+                                                Button { "1" }
+                                                Button { "2" }
+                                                Button { "3" }
                                             }
                                         }
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
                                             Placeholder {}
                                         }
                                         div { class: "flex flex-grow items-center justify-center basis 1/3",
-                                            SelectGroup { class: "w-24",
+                                            SelectGroup { class: "!w-24",
                                                 SelectPlaceholder { "Select" }
                                                 SelectLabel { label: "Label 1" }
                                                 SelectItem { "Option 1" }
@@ -131,7 +130,10 @@ pub fn HomePage() -> Element {
                 }
 
                 div { class: "flex sm:hidden mt-20 items-center justify-center",
-                    Carousel { class: "w-11/12", is_circular: true,
+                    Carousel {
+                        class: "w-11/12",
+                        is_circular: true,
+                        autoscroll_duration: 2000,
                         CarouselTrigger { next: false }
                         CarouselWindow {
                             CarouselContent {
@@ -150,15 +152,15 @@ pub fn HomePage() -> Element {
                                 CarouselItem {
                                     item_key: 2,
                                     class: "bg-background flex flex-grow items-center justify-center",
-                                    Slider { class: "w-24" }
+                                    Slider { class: "!w-24" }
                                 }
                                 CarouselItem {
                                     item_key: 3,
                                     class: "bg-background flex flex-grow items-center justify-center",
                                     ButtonGroup {
-                                        ButtonGroupItem { "1" }
-                                        ButtonGroupItem { "2" }
-                                        ButtonGroupItem { "3" }
+                                        Button { "1" }
+                                        Button { "2" }
+                                        Button { "3" }
                                     }
                                 }
                             }
@@ -166,7 +168,6 @@ pub fn HomePage() -> Element {
                         CarouselTrigger { next: true }
                     }
                 }
-                */
             }
         }
     }

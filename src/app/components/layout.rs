@@ -5,7 +5,6 @@ use crate::app::router::Route;
 
 #[component]
 pub fn SideBarComponent() -> Element {
-    // Empty strings are there to render a Separator
     let components = vec![
         "Accordion",
         "Button",
@@ -51,15 +50,13 @@ pub fn SideBarComponent() -> Element {
                     }
                 }
             }
-            /*
             SidePanel {
                 div { class: "flex justify-center mb-12",
                     SidePanelTrigger { class: "md:hidden w-fit", "Select component" }
                 }
                 SidePanelBackground { class: "md:hidden opacity-15" }
                 SidePanelContent {
-                    class: "md:hidden h-full w-full p-0",
-                    side: Side::Right,
+                    class: "md:hidden !h-3/4 !w-3/4 p-0 overflow-y-auto",
                     SidePanelClose {}
                     div { class: "overflow-y-auto mt-8 py-4 space-y-2 ",
                         for component in components.clone() {
@@ -81,7 +78,6 @@ pub fn SideBarComponent() -> Element {
                     }
                 }
             }
-            */
             div { id: "component-main", class: "px-8 w-full", Outlet::<Route> {} }
         }
     }

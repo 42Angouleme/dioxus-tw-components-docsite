@@ -26,7 +26,6 @@ impl DemoComponent for TextAreaProps {
         rsx! {
             TextArea {
                 class: state.read()[&0].get_class(),
-                color: state.read()[&0].get_color(),
             }
         }
     }
@@ -35,11 +34,11 @@ impl DemoComponent for TextAreaProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<TextAreaProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: TextAreaProps::default()
+                comp_props: CompProps::default(),
             }
         }
     }

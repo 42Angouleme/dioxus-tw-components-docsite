@@ -26,7 +26,6 @@ impl DemoComponent for SliderProps {
         rsx! {
             Slider {
                 class: state.read()[&0].get_class(),
-                color: state.read()[&0].get_color(),
             }
         }
     }
@@ -35,11 +34,11 @@ impl DemoComponent for SliderProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<SliderProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: SliderProps::default()
+                comp_props: CompProps::default(),
             }
         }
     }

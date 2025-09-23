@@ -26,8 +26,8 @@ impl DemoComponent for PlaceholderProps {
         rsx! {
             Placeholder {
                 class: state.read()[&0].get_class(),
-                color: state.read()[&0].get_color(),
-                animation: state.read()[&0].get_animation(),
+                "data-style": state.read()[&0].get_color().to_string(),
+                "data-animation": state.read()[&0].get_animation().to_string(),
             }
         }
     }
@@ -36,11 +36,18 @@ impl DemoComponent for PlaceholderProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<PlaceholderProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: PlaceholderProps::default(),
+                comp_props: CompProps {
+                    has_color: true,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: true,
+                    has_orientation: false,
+                },
             }
         }
     }

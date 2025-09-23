@@ -8,9 +8,7 @@ pub fn ScrollablePage() -> Element {
         let mut hash = HashPreview::new();
         hash.insert(
             0,
-            FieldPreview::default()
-                .class("h-72".to_string())
-                .orientation(Orientation::Vertical),
+            FieldPreview::default().class("h-72".to_string())
         );
         Signal::new(hash)
     });
@@ -31,7 +29,7 @@ impl DemoComponent for ScrollableProps {
         rsx! {
             Scrollable {
                 class: state.read()[&0].get_class(),
-                orientation: state.read()[&0].get_orientation(),
+                "data-orientation": state.read()[&0].get_orientation().to_string(),
                 div { class: "flex flex-col space-y-2 text-sm font-medium",
                     p { class: "paragraph", "About Us" }
                     p { class: "paragraph", "Our Mission" }
@@ -64,11 +62,18 @@ impl DemoComponent for ScrollableProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<ScrollableProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: ScrollableProps::default()
+                comp_props: CompProps {
+                    has_color: false,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: false,
+                    has_orientation: true,
+                },
             }
         }
     }

@@ -4,14 +4,25 @@ use dioxus_tw_components::prelude::*;
 
 use crate::app::router::Route;
 
+
+const BACKGROUND_LIGHT: Asset = asset!(
+    "/assets/background-light.svg",
+    ImageAssetOptions::new().with_preload(true)
+);
+
+const BACKGROUND_DARK: Asset = asset!(
+    "/assets/background-dark.svg",
+    ImageAssetOptions::new().with_preload(true)
+);
+
 #[component]
 pub fn Layout() -> Element {
-    //let theme_manager = use_context::<Signal<ThemeManager>>();
+    let theme_manager = use_context::<Signal<ThemeManager>>();
 
     rsx! {
         div {
-            class: if /*theme_manager.read().current_theme == 0*/ true { "bg-[url(background-light.svg)]" } else { "bg-[url(background-dark.svg)]" },
             class: "flex flex-col backgrounds min-h-screen",
+            background_image: if theme_manager.read().current_theme == 0 { "url('{BACKGROUND_LIGHT}')" } else { "url('{BACKGROUND_DARK}')" },
             header { class: "sticky top-0 bg-background/65 backdrop-blur-sm border-b border-border flex z-30 justify-center backdrop-blur-none",
                 nav { class: "container flex h-14 max-w-(--breakpoint-2xl) items-center whitespace-nowrap",
                     div { class: "absolute left-0 w-full h-full bg-background/60 backdrop-blur-sm z-31" }
@@ -26,7 +37,7 @@ pub fn Layout() -> Element {
                         }
                     }
                     div { class: "flex flex-1 items-center justify-end space-x-2 sm:mr-6 z-32",
-                        //div { class: "sm:mx-12", ThemePicker {} }
+                        div { class: "sm:mx-12", ThemePicker {} }
                         DioxusLink {}
                         GithubLink {}
                     }
@@ -37,7 +48,7 @@ pub fn Layout() -> Element {
 
             footer { class: "h-9 absolute bottom-0 w-full items-center overflow-hidden bg-black text-white",
                 div { class: "flex flex-row mx-5",
-                    div { class: "flex flex-col sm:flex-row sm:space-x-1",
+                    div { class: "flex flex-row sm:space-x-1",
                         h6 { class: "h6 mt-2 text-xs flex-grow", "© 2024 - {chrono::Utc::now().year()} |" }
                         h6 { class: "h6 mt-2 text-xs flex-grow", "42 Angoulême" }
                     }

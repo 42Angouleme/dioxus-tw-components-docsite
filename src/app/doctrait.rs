@@ -1,6 +1,8 @@
 use dioxus::prelude::*;
 
-#[derive(Default, Debug, Clone, Copy, PartialEq, strum_macros::Display, strum_macros::EnumString)]
+#[derive(
+    Default, Debug, Clone, Copy, PartialEq, strum_macros::Display, strum_macros::EnumString,
+)]
 #[strum(serialize_all = "snake_case")]
 pub enum Color {
     #[default]
@@ -27,12 +29,14 @@ pub enum Size {
 #[derive(Default, Clone, Copy, PartialEq, strum_macros::Display, strum_macros::EnumString)]
 #[strum(serialize_all = "snake_case")]
 pub enum Orientation {
-    #[default]
     Horizontal,
+    #[default]
     Vertical,
 }
 
-#[derive(Default, Debug, Clone, Copy, PartialEq, strum_macros::Display, strum_macros::EnumString)]
+#[derive(
+    Default, Debug, Clone, Copy, PartialEq, strum_macros::Display, strum_macros::EnumString,
+)]
 #[strum(serialize_all = "snake_case")]
 pub enum Animation {
     None,

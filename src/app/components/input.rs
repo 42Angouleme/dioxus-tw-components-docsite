@@ -26,8 +26,8 @@ impl DemoComponent for InputProps {
         rsx! {
             Input {
                 class: state.read()[&0].get_class(),
-                color: state.read()[&0].get_color(),
-                size: state.read()[&0].get_size(),
+                "data-style": state.read()[&0].get_color().to_string(),
+                "data-size": state.read()[&0].get_size().to_string(),
                 placeholder: "Input",
             }
         }
@@ -37,11 +37,18 @@ impl DemoComponent for InputProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<InputProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: InputProps::default()
+                comp_props: CompProps {
+                    has_color: true,
+                    has_size: true,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: false,
+                    has_orientation: false,
+                },
             }
         }
     }

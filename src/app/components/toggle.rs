@@ -26,9 +26,6 @@ impl DemoComponent for ToggleProps {
         rsx! {
             Toggle {
                 class: state.read()[&0].get_class(),
-                color: state.read()[&0].get_color(),
-                size: state.read()[&0].get_size(),
-                animation: state.read()[&0].get_animation(),
             }
         }
     }
@@ -37,11 +34,11 @@ impl DemoComponent for ToggleProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<ToggleProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: ToggleProps::default()
+                comp_props: CompProps::default(),
             }
         }
     }

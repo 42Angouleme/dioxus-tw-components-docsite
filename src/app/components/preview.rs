@@ -57,7 +57,7 @@ pub fn CompPreviewSelector(
     index: i32,
     title: Option<String>,
     mut state: Signal<HashPreview>,
-    comp_props: CompProps
+    comp_props: CompProps,
 ) -> Element {
     rsx! {
         div { class: "flex flex-col bg-background border-border rounded-radius border space-y-2 p-4",

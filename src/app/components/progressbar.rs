@@ -45,11 +45,11 @@ impl DemoComponent for ProgressBarProps {
             div { class: "border rounded-radius max-w-96 min-w-64 h-fit",
                 ProgressBar {
                     class: state.read()[&0].get_class(),
-                    color: state.read()[&0].get_color(),
-                    size: state.read()[&0].get_size(),
+                    "data-style": state.read()[&0].get_color().to_string(),
+                    "data-size": state.read()[&0].get_size().to_string(),
                     ProgressBarInner {
                         class: state.read()[&1].get_class(),
-                        color: state.read()[&1].get_color(),
+                        "data-style": state.read()[&1].get_color().to_string(),
                         progress: progress() as u8,
                     }
                 }
@@ -61,17 +61,31 @@ impl DemoComponent for ProgressBarProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<ProgressBarProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: "Outer Bar".to_string(),
                 state,
-                comp_props: ProgressBarProps::default(),
+                comp_props: CompProps {
+                    has_color: true,
+                    has_size: true,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: false,
+                    has_orientation: false,
+                },
             }
-            CompPreviewSelector::<ProgressBarInnerProps> {
+            CompPreviewSelector {
                 index: 1,
                 title: "Inner Bar".to_string(),
                 state,
-                comp_props: ProgressBarInnerProps::default(),
+                comp_props: CompProps {
+                    has_color: true,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: false,
+                    has_orientation: false,
+                },
             }
         }
     }

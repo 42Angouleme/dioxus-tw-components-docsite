@@ -13,11 +13,11 @@ pub fn RadioPage() -> Element {
     });
 
     rsx! {
-        PreviewFull::<RadioProps> {}
+        PreviewFull::<RadioGroupProps> {}
     }
 }
 
-impl DemoComponent for RadioProps {
+impl DemoComponent for RadioGroupProps {
     fn comp_introduction() -> &'static str {
         "A customizable and interactive radio component"
     }
@@ -26,15 +26,11 @@ impl DemoComponent for RadioProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            div { class: "flex space-x-2",
+            RadioGroup {
                 for i in 0..3 {
-                    div { class: "flex flex-col items-center space-y-2",
-                        p { class: "text-foreground font-bold", "{i}" }
-                        Radio {
-                            class: state.read()[&i].get_class(),
-                            color: state.read()[&i].get_color(),
-                            size: state.read()[&i].get_size(),
-                        }
+                    RadioItem { value: i.to_string(),
+                        class: state.read()[&i].get_class(),
+                        "data-style": state.read()[&i].get_color().to_string(),
                     }
                 }
             }
@@ -46,11 +42,18 @@ impl DemoComponent for RadioProps {
 
         rsx! {
             for index in 0..3 {
-                CompPreviewSelector::<RadioProps> {
+                CompPreviewSelector {
                     index,
                     title: format!("Radio {index}"),
                     state,
-                    comp_props: RadioProps::default()
+                    comp_props: CompProps {
+                        has_color: true,
+                        has_size: false,
+                        has_side: false,
+                        has_variant: false,
+                        has_animation: false,
+                        has_orientation: false,
+                    },
                 }
             }
         }

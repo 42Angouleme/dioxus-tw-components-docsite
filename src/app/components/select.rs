@@ -38,11 +38,11 @@ impl DemoComponent for SelectGroupProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<SelectGroupProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: SelectGroupProps::default(),
+                comp_props: CompProps::default(),
             }
         }
     }

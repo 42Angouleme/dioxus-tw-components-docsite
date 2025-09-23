@@ -65,11 +65,11 @@ impl DemoComponent for TabsProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<TabsProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: None,
                 state,
-                comp_props: TabsProps::default()
+                comp_props: CompProps::default(),
             }
         }
     }

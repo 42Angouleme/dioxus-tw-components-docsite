@@ -6,13 +6,10 @@ use crate::app::{components::preview::*, doctrait::DemoComponent};
 pub fn SidePanelPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
-        for index in 0..3 {
-            hash.insert(index, FieldPreview::default());
-        }
-        hash.insert(
-            3,
-            FieldPreview::default().class("max-w-full h-96".to_string()),
-        );
+        hash.insert(0, FieldPreview::default().class("p-2".to_string()));
+        hash.insert(1, FieldPreview::default());
+        hash.insert(2, FieldPreview::default());
+        hash.insert(3, FieldPreview::default().class("!w-96".to_string()));
         Signal::new(hash)
     });
 
@@ -34,13 +31,12 @@ impl DemoComponent for SidePanelProps {
                 SidePanelTrigger { class: state.read()[&0].get_class(), "OpenSidePanel" }
                 SidePanelBackground {
                     class: state.read()[&1].get_class(),
-                    color: state.read()[&1].get_color(),
-                    animation: state.read()[&1].get_animation(),
+                    "data-animation": state.read()[&1].get_animation().to_string(),
                 }
                 SidePanelContent {
                     class: state.read()[&3].get_class(),
-                    animation: state.read()[&3].get_animation(),
-                    side: state.read()[&3].get_side(),
+                    "data-animation": state.read()[&3].get_animation().to_string(),
+                    "data-side": state.read()[&3].get_side().to_string(),
                     div {
                         SidePanelClose {
                             class: state.read()[&2].get_class(),
@@ -65,29 +61,43 @@ impl DemoComponent for SidePanelProps {
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {
-            CompPreviewSelector::<SidePanelTriggerProps> {
+            CompPreviewSelector {
                 index: 0,
                 title: "Trigger".to_string(),
                 state,
-                comp_props: SidePanelTriggerProps::default(),
+                comp_props: CompProps::default(),
             }
-            CompPreviewSelector::<SidePanelBackgroundProps> {
+            CompPreviewSelector {
                 index: 1,
                 title: "Background".to_string(),
                 state,
-                comp_props: SidePanelBackgroundProps::default(),
+                comp_props: CompProps {
+                    has_color: true,
+                    has_size: false,
+                    has_side: false,
+                    has_variant: false,
+                    has_animation: true,
+                    has_orientation: false,
+                },
             }
-            CompPreviewSelector::<SidePanelCloseProps> {
+            CompPreviewSelector {
                 index: 2,
                 title: "Close button".to_string(),
                 state,
-                comp_props: SidePanelCloseProps::default(),
+                comp_props: CompProps::default(),
             }
-            CompPreviewSelector::<SidePanelContentProps> {
+            CompPreviewSelector {
                 index: 3,
-                title: "Panel".to_string(),
+                title: "Content".to_string(),
                 state,
-                comp_props: SidePanelContentProps::default(),
+                comp_props: CompProps {
+                    has_color: false,
+                    has_size: false,
+                    has_side: true,
+                    has_variant: false,
+                    has_animation: true,
+                    has_orientation: false,
+                },
             }
         }
     }

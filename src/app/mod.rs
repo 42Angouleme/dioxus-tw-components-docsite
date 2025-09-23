@@ -17,7 +17,7 @@ const TAILWIND_CSS: Asset = asset!(
 const FAVICON: Asset = asset!("/assets/favicon.png");
 
 pub fn App() -> Element {
-    //let theme_manager = use_context_provider(|| Signal::new(ThemeManager::default()));
+    let theme_manager = use_context_provider(|| Signal::new(ThemeManager::default()));
 
     rsx! {
         Bootstrap {}
@@ -25,7 +25,7 @@ pub fn App() -> Element {
         Toaster {
             div {
                 class: "relative bg-background text-foreground",
-                //style: theme_manager.read().to_style(),
+                style: theme_manager.read().to_style(),
                 Router::<Route> {}
             }
         }

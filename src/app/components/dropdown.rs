@@ -7,11 +7,7 @@ pub fn DropdownPage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
         hash.insert(0, FieldPreview::default());
-        hash.insert(
-            1,
-            FieldPreview::default()
-                .class("p-2".to_string()),
-        );
+        hash.insert(1, FieldPreview::default().class("p-2".to_string()));
         hash.insert(2, FieldPreview::default());
         Signal::new(hash)
     });
