@@ -4,7 +4,6 @@ use dioxus_tw_components::prelude::*;
 
 use crate::app::router::Route;
 
-
 const BACKGROUND_LIGHT: Asset = asset!(
     "/assets/background-light.svg",
     ImageAssetOptions::new().with_preload(true)
@@ -23,8 +22,8 @@ pub fn Layout() -> Element {
         div {
             class: "flex flex-col backgrounds min-h-screen",
             background_image: if theme_manager.read().current_theme == 0 { "url('{BACKGROUND_LIGHT}')" } else { "url('{BACKGROUND_DARK}')" },
-            header { class: "sticky top-0 bg-background/65 backdrop-blur-sm border-b border-border flex z-30 justify-center backdrop-blur-none",
-                nav { class: "container flex h-14 max-w-(--breakpoint-2xl) items-center whitespace-nowrap",
+            header { class: "sticky top-0 bg-background/65 border-b border-border flex z-30 justify-center",
+                nav { class: "container flex h-14 w-screen items-center whitespace-nowrap",
                     div { class: "absolute left-0 w-full h-full bg-background/60 backdrop-blur-sm z-31" }
                     div { class: "flex flex-1 space-x-2 items-center ml-6 z-32",
                         Link { class: "sm:mr-6", to: "/",

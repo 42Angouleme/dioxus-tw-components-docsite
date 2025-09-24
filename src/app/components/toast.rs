@@ -28,7 +28,6 @@ impl From<Color> for ToastColor {
     }
 }
 
-
 impl From<Animation> for ToastAnimation {
     fn from(animation: Animation) -> Self {
         match animation {

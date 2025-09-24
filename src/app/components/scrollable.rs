@@ -6,10 +6,7 @@ use crate::app::{components::preview::*, doctrait::DemoComponent};
 pub fn ScrollablePage() -> Element {
     let _state = use_context_provider(|| {
         let mut hash = HashPreview::new();
-        hash.insert(
-            0,
-            FieldPreview::default().class("h-72".to_string())
-        );
+        hash.insert(0, FieldPreview::default().class("h-72".to_string()));
         Signal::new(hash)
     });
 
