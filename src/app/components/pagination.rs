@@ -22,8 +22,6 @@ impl DemoComponent for PaginationProps {
 
     fn BuildCompPreview() -> Element {
         let page_number = use_signal(|| 1_usize);
-        let page_number_outlined = use_signal(|| 1_usize);
-        let page_number_ghost = use_signal(|| 1_usize);
         let state = use_context::<Signal<HashPreview>>();
 
         rsx! {

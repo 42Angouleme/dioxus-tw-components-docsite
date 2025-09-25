@@ -32,6 +32,7 @@ impl DemoComponent for CheckboxProps {
                         p { class: "text-foreground font-bold", "{i}" }
                         Checkbox {
                             class: state.read()[&i].get_class(),
+                            default_checked: i == 1,
                         }
                     }
                 }

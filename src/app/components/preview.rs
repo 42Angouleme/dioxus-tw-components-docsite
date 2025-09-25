@@ -29,7 +29,7 @@ fn PreviewDemo<T: DemoComponent + 'static>() -> Element {
     }
 }
 
-#[derive(Clone, PartialEq, Eq)]
+#[derive(Clone, Default, PartialEq, Eq)]
 pub struct CompProps {
     pub has_color: bool,
     pub has_size: bool,
@@ -37,19 +37,6 @@ pub struct CompProps {
     pub has_variant: bool,
     pub has_animation: bool,
     pub has_orientation: bool,
-}
-
-impl std::default::Default for CompProps {
-    fn default() -> Self {
-        Self {
-            has_color: false,
-            has_size: false,
-            has_side: false,
-            has_variant: false,
-            has_animation: false,
-            has_orientation: false,
-        }
-    }
 }
 
 #[component]
@@ -107,8 +94,8 @@ pub fn ClassSelector(state: Signal<HashPreview>, index: i32) -> Element {
         div { id: "class-selector",
             Input {
                 placeholder: "Tailwind class",
-                value: state.read().get(&index).unwrap().get_class(),
-                oninput: move |event: FormEvent| {
+                default_value: state.read().get(&index).unwrap().get_class(),
+                onchange: move |event: FormEvent| {
                     if let Some(field_preview) = state.write().get_mut(&index) {
                         field_preview.set_class(event.data().value());
                     }
@@ -212,7 +199,7 @@ pub fn Selector(
     rsx! {
         div { id, class: "min-w-24",
             SelectGroup {
-                oninput: move |event: FormEvent| {
+                onchange: move |event: FormEvent| {
                     if let Some(field_preview) = state.write().get_mut(&index) {
                         selector_type.read().set_value(field_preview, &event.data().value());
                     }
@@ -327,11 +314,6 @@ impl FieldPreview {
 
     pub fn set_orientation(&mut self, orientation: Orientation) {
         self.orientation = orientation;
-    }
-
-    pub fn orientation(mut self, orientation: Orientation) -> Self {
-        self.orientation = orientation;
-        self
     }
 
     pub fn get_side(&self) -> Side {

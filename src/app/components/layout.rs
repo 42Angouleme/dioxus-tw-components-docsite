@@ -18,6 +18,7 @@ pub fn SideBarComponent() -> Element {
         "Icon",
         "Input",
         "LightSwitch",
+        "Markdown",
         "Modal",
         "Pagination",
         "Placeholder",

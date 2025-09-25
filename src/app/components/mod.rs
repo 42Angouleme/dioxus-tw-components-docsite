@@ -10,6 +10,7 @@ pub mod hovercard;
 pub mod icon;
 pub mod input;
 pub mod lightswitch;
+pub mod markdown;
 pub mod modal;
 pub mod pagination;
 pub mod placeholder;
@@ -38,6 +39,7 @@ use hovercard::*;
 use icon::*;
 use input::*;
 use lightswitch::*;
+use markdown::*;
 use modal::*;
 use pagination::*;
 use placeholder::*;
@@ -96,6 +98,9 @@ pub fn ComponentPage(name: String) -> Element {
             },
             "placeholder" => rsx! {
                 PlaceholderPage {}
+            },
+            "markdown" => rsx! {
+                MarkdownPage {}
             },
             "modal" => rsx! {
                 ModalPage {}
